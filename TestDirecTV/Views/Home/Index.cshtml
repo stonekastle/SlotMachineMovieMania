@@ -1,0 +1,59 @@
+﻿
+<div class="jumbotron">
+    <h1 style="color:white; font-family:verdana; font-size:300%; text-align:center;">Film Challenge</h1>
+
+    <form id="ScoreboardForm" style="text-align:center" @*action="@Url.Action("Index2", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"*@>
+        <h1 style="color:white; font-family:verdana; " text-align:center">What's your name?</h1>
+        <h3 style="color:white; font-family:verdana; " text-align:center">(We're keeping score)</h3>
+
+        <p>
+            <input type="text" class="form-control" placeholder="William" name="firstName" id="firstName" />
+        </p>
+
+        <p>
+            <input type="text" class="form-control" placeholder="Shakespeare" name="lastName" id="lastName" />
+        </p>
+
+        <p>
+            <input type="submit" name="Start" id="submit" />
+        </p>
+
+
+    </form>
+
+</div>
+
+
+<script src="~/Scripts/sabio.js"></script>
+<script type="text/javascript">
+
+    @*
+        sabio.page.updateId = @Model.Item;
+    *@
+
+    sabio.page.startup = function () {
+
+        $('#submit').on('click', sabio.page.handlers.scoreboardFormSubmit);
+    }
+
+    sabio.page.handlers.scoreboardFormSubmit = function (){
+        var myData = $("#scoreboardForm").serialize();
+        sabio.services.scoreboard.insert(myData, sabio.page.onPostSuccess, sabio.page.onPostError);
+    }
+
+
+    sabio.services.scoreboard.insert = function (data, onPostSuccess, onPostError){
+        //var myData = $("#scoreboardForm").serialize();
+        var url = "/api/scoreboard/";
+        var settings = {
+            cache: false
+            , contentType: "application/json; charset=UTF-8"
+            , data: data
+            , dataType: "json"
+            , success: onPostSuccess
+            , error: onPostError
+            , type: "POST"
+        }
+    }
+
+</script>
