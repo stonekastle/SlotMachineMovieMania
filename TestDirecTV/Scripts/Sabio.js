@@ -32,6 +32,7 @@ sabio.layout.startUp = function () {
 sabio.APPNAME = "SabioApp";//legacy
 
 
-//$(document).ready(function(){
-//    console.log("ready!");
-//});
+
+$(document).ready(function(){
+    console.log("ready!");
+});

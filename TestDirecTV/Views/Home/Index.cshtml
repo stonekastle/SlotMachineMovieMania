@@ -39,8 +39,8 @@
 </div>
 
 
-
-<script type="text/javascript">
+@section Scripts {
+    <script type="text/javascript">
 
         @*
             var updateId = @Model.Item;
@@ -86,4 +86,5 @@
             var errorMessage = "Error adding Player:" + jqxhr.responseJSON.message;
         }
 
-</script>
+    </script>
+}
