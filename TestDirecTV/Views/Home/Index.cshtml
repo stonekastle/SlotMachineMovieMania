@@ -39,51 +39,52 @@
 </div>
 
 
+@section Scripts {
+    <script type="text/javascript">
 
-<script src="~/Scripts/sabio.js"></script>
-<script type="text/javascript">
+        @*
+            var updateId = @Model.Item;
+        *@
 
-    @*
-        sabio.page.updateId = @Model.Item;
-    *@
-
-    sabio.page.startup = function () {
-
-        $('#submit').on('click', sabio.page.handlers.scoreboardFormSubmit);
-    }
+        $(document).ready(function () {
+            console.log("test")
+            $('#submit').on('click', scoreboardFormSubmit);
+        });
 
 
-    sabio.services.insert = function (data, onPostSuccess, onPostError) {
-        //var myData = $("#scoreboardForm").serialize();
-        var url = "/api/scoreboard/";
-        var settings = {
-            cache: false
-            , contentType: "application/json; charset=UTF-8"
-            , data: data
-            , dataType: "json"
-            , success: onPostSuccess
-            , error: onPostError
-            , type: "POST"
+        var insert = function (data, onPostSuccess, onPostError) {
+            //var myData = $("#scoreboardForm").serialize();
+            var url = "/api/scoreboard/";
+            var settings = {
+                cache: false
+                , contentType: "application/json; charset=UTF-8"
+                , data: data
+                , dataType: "json"
+                , success: onPostSuccess
+                , error: onPostError
+                , type: "POST"
+            }
         }
-    }
 
 
-    sabio.page.handlers.scoreboardFormSubmit = function () {
-        var myData = $("#scoreboardForm").serialize();
-        //sabio.services.scoreboard.insert(myData, sabio.page.onPostSuccess, sabio.page.onPostError);
-        sabio.services.insert(myData, sabio.page.onPostSuccess, sabio.page.onPostError);
-        window.location.replace("/Index2");
-    }
+        var scoreboardFormSubmit = function () {
+            console.log("fired!")
+            var myData = $("#scoreboardForm").serialize();
+            //insert(myData, onPostSuccess, onPostError);
+            insert(myData, onPostSuccess, onPostError);
+            window.location.replace("/Home/Index2");
+        }
 
 
 
 
-    onPostSuccess = function (data) {
-        console.log(data.item);
-        sabio.page.updateId = data.item;
-    }
-    onPostError = function (jqxhr) {
-        var errorMessage = "Error adding Player:" + jqxhr.responseJSON.message;
-    }
+        onPostSuccess = function (data) {
+            console.log(data.item);
+            updateId = data.item;
+        }
+        onPostError = function (jqxhr) {
+            var errorMessage = "Error adding Player:" + jqxhr.responseJSON.message;
+        }
 
-</script>
+    </script>
+}
