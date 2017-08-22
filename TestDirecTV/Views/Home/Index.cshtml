@@ -47,10 +47,20 @@
         *@
 
         $(document).ready(function () {
-            console.log("test")
+            console.log("All systems are clear, Launch Control")
             $('#submit').on('click', scoreboardFormSubmit);
         });
 
+
+
+
+        var scoreboardFormSubmit = function () {
+            console.log("fired to scoreboard!")
+            var myData = $("#scoreboardForm").serialize();
+            //insert(myData, onPostSuccess, onPostError);
+            insert(myData, onPostSuccess, onPostError);
+            //window.location.replace("/Home/Index3");
+        }
 
         var insert = function (data, onPostSuccess, onPostError) {
             //var myData = $("#scoreboardForm").serialize();
@@ -65,17 +75,6 @@
                 , type: "POST"
             }
         }
-
-
-        var scoreboardFormSubmit = function () {
-            console.log("fired!")
-            var myData = $("#scoreboardForm").serialize();
-            //insert(myData, onPostSuccess, onPostError);
-            insert(myData, onPostSuccess, onPostError);
-            window.location.replace("/Home/Index2");
-        }
-
-
 
 
         onPostSuccess = function (data) {
