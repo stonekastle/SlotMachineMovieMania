@@ -16,12 +16,7 @@ namespace TestDirecTV.Controllers.Api
     [RoutePrefix("api/scoreboard")]
     public class ScoreboardApiController : ApiController
     {
-        InterfaceScoreboardService _scoreboardService;
-
-        public ScoreboardApiController(InterfaceScoreboardService scoreboardService)
-        {
-            _scoreboardService = scoreboardService;
-        }
+        ScoreboardService _scoreboardService = new ScoreboardService();
 
         [HttpPost]
         [Route]

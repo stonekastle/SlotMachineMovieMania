@@ -4,7 +4,7 @@
     <div class="row">
         <h1 style="color:dodgerblue; font-family:verdana; font-size:300%; text-align:center;">Film Challenge</h1>
 
-        <form id="ScoreboardForm" style="text-align:center" @*action="@Url.Action("Index2", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"*@>
+        <form id="scoreboardForm" style="text-align:center" @*action="@Url.Action("Index2", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"*@>
             <h1 style="color:dodgerblue; font-family:verdana; " text-align:center">What's your name?</h1>
             <h3 style="color:gray; font-family:verdana; " text-align:center">(We're keeping score)</h3>
             <br>
@@ -57,7 +57,6 @@
         var scoreboardFormSubmit = function () {
             console.log("fired to scoreboard!")
             var myData = $("#scoreboardForm").serialize();
-            //insert(myData, onPostSuccess, onPostError);
             insert(myData, onPostSuccess, onPostError);
             //window.location.replace("/Home/Index3");
         }
@@ -67,13 +66,15 @@
             var url = "/api/scoreboard/";
             var settings = {
                 cache: false
-                , contentType: "application/json; charset=UTF-8"
+                , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
                 , data: data
                 , dataType: "json"
                 , success: onPostSuccess
                 , error: onPostError
                 , type: "POST"
             }
+
+            $.ajax(url, settings);
         }
 
 
