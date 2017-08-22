@@ -241,7 +241,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="css\jquery.slotmachine.css" />
     <Content Include="css\slots.css" />
     <Content Include="css\template1.css" />
     <Content Include="css\template2.css" />

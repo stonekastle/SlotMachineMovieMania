@@ -15,7 +15,7 @@ namespace TestDirecTV.Controllers
             return View();
         }
 
-
+        [Route("{id:int}/")]
         public ActionResult Index2()
         {
             ViewBag.Title = "Slot";
@@ -23,28 +23,28 @@ namespace TestDirecTV.Controllers
             return View();
         }
 
-
+        [Route("{id:int}/")]
         public ActionResult Index3()
         {
             ViewBag.Title = "Q1";
 
             return View();
         }
-
+        [Route("{id:int}/")]
         public ActionResult Index4()
         {
             ViewBag.Title = "Q2";
 
             return View();
         }
-
+        [Route("{id:int}/")]
         public ActionResult Index5()
         {
             ViewBag.Title = "Q3";
 
             return View();
         }
-
+        
         public ActionResult Index6()
         {
             ViewBag.Title = "Scoreboard";

@@ -1,27 +1,43 @@
 ﻿
-<div class="jumbotron">
-    <h1 style="color:white; font-family:verdana; font-size:300%; text-align:center;">Film Challenge</h1>
 
-    <form id="ScoreboardForm" style="text-align:center" @*action="@Url.Action("Index2", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"*@>
-        <h1 style="color:white; font-family:verdana; " text-align:center">What's your name?</h1>
-        <h3 style="color:white; font-family:verdana; " text-align:center">(We're keeping score)</h3>
+<div class="container">
+    <div class="row">
+        <h1 style="color:dodgerblue; font-family:verdana; font-size:300%; text-align:center;">Film Challenge</h1>
 
-        <p>
-            <input type="text" class="form-control" placeholder="William" name="firstName" id="firstName" />
-        </p>
+        <form id="ScoreboardForm" style="text-align:center" @*action="@Url.Action("Index2", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"*@>
+            <h1 style="color:dodgerblue; font-family:verdana; " text-align:center">What's your name?</h1>
+            <h3 style="color:gray; font-family:verdana; " text-align:center">(We're keeping score)</h3>
+            <br>
 
-        <p>
-            <input type="text" class="form-control" placeholder="Shakespeare" name="lastName" id="lastName" />
-        </p>
+            <div class="form-group">
+                @*<label class="col-sm-6 control-label">First Name</label>*@
+                <div class="col-sm-6 col-sm-offset-4"><input type="text" id="firstName" name="FirstName" placeholder="Diego" class="form-control" /></div>
+                @*<input type="text" class="form-control" placeholder="William" name="firstName" id="firstName" />*@
+            </div>
+            <br />
+            <br />
+            
+           
 
-        <p>
-            <input type="submit" name="Start" id="submit" />
-        </p>
+            <div class="form-group">
+                @*<label class="col-sm-6 control-label">Last Name</label>*@
+                <div class="col-sm-5 col-sm-offset-5"><input type="text" id="firstName" name="LastName" placeholder="Maradona" class="form-control" /></div>
+                @*<input type="text" class="form-control" placeholder="Shakespeare" name="lastName" id="lastName" />*@
+            </div>
+
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="button" class="btn-primary" name="Start" id="submit">Start</button>
+                </div>
+            </div>
 
 
-    </form>
-
+        </form>
+    </div>
 </div>
+
 
 
 <script src="~/Scripts/sabio.js"></script>
@@ -36,13 +52,8 @@
         $('#submit').on('click', sabio.page.handlers.scoreboardFormSubmit);
     }
 
-    sabio.page.handlers.scoreboardFormSubmit = function (){
-        var myData = $("#scoreboardForm").serialize();
-        sabio.services.scoreboard.insert(myData, sabio.page.onPostSuccess, sabio.page.onPostError);
-    }
 
-
-    sabio.services.scoreboard.insert = function (data, onPostSuccess, onPostError){
+    sabio.services.insert = function (data, onPostSuccess, onPostError) {
         //var myData = $("#scoreboardForm").serialize();
         var url = "/api/scoreboard/";
         var settings = {
@@ -54,6 +65,25 @@
             , error: onPostError
             , type: "POST"
         }
+    }
+
+
+    sabio.page.handlers.scoreboardFormSubmit = function () {
+        var myData = $("#scoreboardForm").serialize();
+        //sabio.services.scoreboard.insert(myData, sabio.page.onPostSuccess, sabio.page.onPostError);
+        sabio.services.insert(myData, sabio.page.onPostSuccess, sabio.page.onPostError);
+        window.location.replace("/Index2");
+    }
+
+
+
+
+    onPostSuccess = function (data) {
+        console.log(data.item);
+        sabio.page.updateId = data.item;
+    }
+    onPostError = function (jqxhr) {
+        var errorMessage = "Error adding Player:" + jqxhr.responseJSON.message;
     }
 
 </script>

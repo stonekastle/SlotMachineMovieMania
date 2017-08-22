@@ -17,7 +17,7 @@
         </style>
 
     <style>
-        {
+        /*{
             margin: 0;
             padding: 0;
         }
@@ -43,7 +43,7 @@
             opacity: 0.5;
             color: blue;
             margin-top: 100px;
-        }
+        }*/
         
 
     </style>
@@ -51,12 +51,12 @@
 
 
 
-    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     
-    <center><img src="~/Images/logo.png" /></center>
+    @*<center><img src="~/Images/logo.png" /></center>*@
 
     @RenderBody()
 
