@@ -5,16 +5,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    
-    
+
+
     <title></title>
 
     <style>
-            /*body{
+        /*body{
                 background-image: url("/Images/background.jpg");
                 background-size: cover;
             }*/
-        </style>
+    </style>
 
     <style>
         /*{
@@ -44,8 +44,6 @@
             color: blue;
             margin-top: 100px;
         }*/
-        
-
     </style>
 
 
@@ -53,9 +51,15 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+
+
 </head>
 <body>
-    
+
     @*<center><img src="~/Images/logo.png" /></center>*@
 
     @RenderBody()
@@ -63,56 +67,54 @@
 
     @*<h1 style="color:white; font-family:verdana; font-size:300%; text-align:center;">Scoreboard</h1>
 
-    <table>
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-            <tr>
-                <td>Chris Castle</td>
-                <td>15</td>
-            </tr>
-            <tr>
-                <td>Alexandria Smith</td>
-                <td>15</td>
-            </tr>
-            <tr>
-                <td>
-                    Morgan Miller
-                </td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>Matthew Columbo</td>
-                <td>18</td>
-            </tr>
-            <tr>
-                <td>Vladin Doyevsky</td>
-                <td>24</td>
-            </tr>
-            <tr>
-                <td>Winter Shaw</td>
-                <td>19</td>
-            </tr>
+        <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td>Chris Castle</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Alexandria Smith</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>
+                        Morgan Miller
+                    </td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Matthew Columbo</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>Vladin Doyevsky</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>Winter Shaw</td>
+                    <td>19</td>
+                </tr>
 
-        </table>*@
+            </table>*@
 
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
     @*<script src="~/Scripts/jquery-1.10.2.js"></script>
 
-    <script src="~/Scripts/bootstrap.js"></script>*@
-    
+        <script src="~/Scripts/bootstrap.js"></script>*@
+
 
     @*<script src="/js/jquery-1.7.1.min.js"></script>
-    <script src="/js/jquery-ui-1.8.17.custom.min.js"></script>
-    <script src="/js/slots.js"></script>
-    <script src="/js/soundmanager2.js"></script>
-    <script src="~/Scripts/jQuery.slotmachine.min.js"></script>*@
+        <script src="/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script src="/js/slots.js"></script>
+        <script src="/js/soundmanager2.js"></script>
+        <script src="~/Scripts/jQuery.slotmachine.min.js"></script>*@
 </body>
 
 
