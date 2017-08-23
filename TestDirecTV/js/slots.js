@@ -22,75 +22,83 @@ var slotMachine = {
 
 	winningsFormatPrefix: '',  // If winnings are "money", set prefix to be '$', '£', etc. If everything is unit-less, leave as is.
 
-	spinURL: '/slots/spin.php', // point to the server component to call to get spin results.
+	spinURL: '/slots/spin.php', // point to the server component to call to get spin results. 
 
-	curBet: minBet,
+        //- Finally, comes the part of deciding which reels positions, or prize to show. If you look at slots/spin.php, you'll see it has a hard-coded answer. You want to emulate that, without having to have PHP.
+	    //- The easiest way is to just rename "spin.php" to "spin.json", or something like that, and query that instead from the client. Then, inside, you harcode a JSON object similar to the one PHP is generating. For example, replace:
+        //- echo json_encode(array('success' => true, 'reels' => array(1, 2.5, 3), 'prize' => null, 'credits' => 9, 'dayWinnings' => 10, 'lifetimeWinnings' => 500));
+        //with
+        //- { success: true, reels: [1,2.5,3], prize: null, credits: 9, dayWinnings: 10, lifetimeWinnings: 500 }
+
+
+
+	//curBet: minBet,
 	soundEnabled: true,
 	sounds: {},
 	
 	spinning: false,
 
 	init : function() {
-		$('#betSpinUp').click(function() { slotMachine.change_bet(+1); });
-		$('#betSpinDown').click(function() { slotMachine.change_bet(-1); });
+		//$('#betSpinUp').click(function() { slotMachine.change_bet(+1); });
+		//$('#betSpinDown').click(function() { slotMachine.change_bet(-1); });
 		$('#spinButton').click(function() { slotMachine.spin(); });
 
 		$('#soundOffButton').click(function() { slotMachine.toggle_sound(); });
 
-		if (slotMachine.soundEnabled)  {
-			soundManager.setup({
-				url: "/js/",
-				onready: function() {
-					slotMachine.sounds['payout'] = soundManager.createSound({id: "payout", url: 'sounds/payout.mp3'});
-					slotMachine.sounds['fastpayout'] = soundManager.createSound({id: "fastpayout", url: 'sounds/fastpayout.mp3'});
-					slotMachine.sounds['spinning'] = soundManager.createSound({id: "spinning", url: 'sounds/spinning.mp3'});
-				}
-			});
-		}
+		//if (slotMachine.soundEnabled)  {
+		//	soundManager.setup({
+		//		url: "/js/",
+		//		onready: function() {
+		//			slotMachine.sounds['payout'] = soundManager.createSound({id: "payout", url: 'sounds/payout.mp3'});
+		//			slotMachine.sounds['fastpayout'] = soundManager.createSound({id: "fastpayout", url: 'sounds/fastpayout.mp3'});
+		//			slotMachine.sounds['spinning'] = soundManager.createSound({id: "spinning", url: 'sounds/spinning.mp3'});
+		//		}
+		//	});
+		//}
 
-		if (slotMachine.get_balance() < minBet) {
-			slotMachine.disable_spin_button();
-		}
+		//if (slotMachine.get_balance() < minBet) {
+		//	slotMachine.disable_spin_button();
+		//}
 	},
 
 	//----------------------------------------------------
 
-	get_balance: function() {
-		return parseInt($('#credits').html(), 10);
-	},
+	//get_balance: function() {
+	//	return parseInt($('#credits').html(), 10);
+	//},
 
-	change_bet: function(delta) {
-		if (slotMachine.spinning) { return; } // don't do anything while spinning.
+	//change_bet: function(delta) {
+	//	if (slotMachine.spinning) { return; } // don't do anything while spinning.
 		
-		slotMachine.curBet += delta;
-		slotMachine.curBet = Math.min(slotMachine.curBet, maxBet);
-		slotMachine.curBet = Math.min(slotMachine.curBet, slotMachine.get_balance()); // Don't allow higher bet than current balance
-		slotMachine.curBet = Math.max(minBet, slotMachine.curBet); // But don't allow = 0 either
+	//	slotMachine.curBet += delta;
+	//	slotMachine.curBet = Math.min(slotMachine.curBet, maxBet);
+	//	slotMachine.curBet = Math.min(slotMachine.curBet, slotMachine.get_balance()); // Don't allow higher bet than current balance
+	//	slotMachine.curBet = Math.max(minBet, slotMachine.curBet); // But don't allow = 0 either
 		
-		slotMachine.show_won_state(false); // Remove won state, so that they can't easily fake a screenshot to say "I bet 2 and got paid off only as 1"
+	//	slotMachine.show_won_state(false); // Remove won state, so that they can't easily fake a screenshot to say "I bet 2 and got paid off only as 1"
 
-		$('#bet').html(slotMachine.curBet);
+	//	$('#bet').html(slotMachine.curBet);
 
-		$('#prizes_list .tdPayout').each(function() {
-			var $this = $(this);
-			$this.html(
-				($this.attr("data-payoutPrefix") || "") + parseInt($this.attr("data-basePayout"), 10) * slotMachine.curBet + ($this.attr("data-payoutSuffix") || "")
-			);
-		});
+	//	$('#prizes_list .tdPayout').each(function() {
+	//		var $this = $(this);
+	//		$this.html(
+	//			($this.attr("data-payoutPrefix") || "") + parseInt($this.attr("data-basePayout"), 10) * slotMachine.curBet + ($this.attr("data-payoutSuffix") || "")
+	//		);
+	//	});
 		
-		if (slotMachine.get_balance() >= slotMachine.curBet) {
-			slotMachine.enable_spin_button();
-		}
-	},
+	//	if (slotMachine.get_balance() >= slotMachine.curBet) {
+	//		slotMachine.enable_spin_button();
+	//	}
+	//},
 
-	toggle_sound: function() {
-		if ($('#soundOffButton').hasClass("off")) {
-			soundManager.unmute();
-		} else {
-			soundManager.mute();
-		}
-		$('#soundOffButton').toggleClass("off");
-	},
+	//toggle_sound: function() {
+	//	if ($('#soundOffButton').hasClass("off")) {
+	//		soundManager.unmute();
+	//	} else {
+	//		soundManager.mute();
+	//	}
+	//	$('#soundOffButton').toggleClass("off");
+	//},
 
 	enable_spin_button: function() {
 		$('#spinButton').removeClass("disabled");
@@ -104,8 +112,8 @@ var slotMachine = {
 
 	spin: function() {
 		// Validate that we can spin
-		if ($('#spinButton').hasClass("disabled")) { return false; }
-		if (slotMachine.spinning) { return false; }
+		//if ($('#spinButton').hasClass("disabled")) { return false; }
+		//if (slotMachine.spinning) { return false; }
 		
 		// Clean up the UI
 		slotMachine.spinning = true;
@@ -113,7 +121,7 @@ var slotMachine = {
 		slotMachine.disable_spin_button();
 
 		// Deduct the bet from the number of credits
-		$('#credits').html(slotMachine.get_balance() - slotMachine.curBet);
+		//$('#credits').html(slotMachine.get_balance() - slotMachine.curBet);
 
 		// Make the reels spin
 		slotMachine._start_reel_spin(1, 0);
@@ -150,7 +158,7 @@ var slotMachine = {
 		$.ajax({
 			url: slotMachine.spinURL,
 			type: "POST",
-			data: { bet : slotMachine.curBet, windowID: windowID, machine_name: machineName},
+			//data: { bet : slotMachine.curBet, windowID: windowID, machine_name: machineName},
 			dataType: "json",
 			timeout: 10000,
 			success: function(data){
