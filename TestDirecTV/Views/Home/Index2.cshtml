@@ -1,10 +1,10 @@
-﻿
+﻿@model TestDirecTV.Models.SlotsViewModel
 @{
     ViewBag.Title = "Index2";
 }
 
 <link type="text/css" rel="stylesheet" href="~/css/slots.css" />
-<link type="text/css" rel="stylesheet" href="~/css/template1.css" />
+<link type="text/css" rel="stylesheet" href="~/css/template2.css" />
 
 <div id="PageContainer">
     <div id="PageContainerInner">
@@ -42,6 +42,7 @@
 
 @section Scripts {
     <script type="text/javascript">
+        var userId = @Model.UserId;
         var machineName = '';
 
         var numIconsPerReel = '';

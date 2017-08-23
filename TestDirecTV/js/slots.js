@@ -4,7 +4,7 @@ var slotMachine = {
     // Set it to 3 * stripHeight
     // Also set the top property to the initial position you want to show
     stripHeight: 720, // Update this to match the strip PNG
-    alignmentOffset: 86, // Play around with this until reels are properly aligned post-spin
+    alignmentOffset: 100, // Play around with this until reels are properly aligned post-spin
 
     firstReelStopTime: 667,
     secondReelStopTime: 575, // since first reel's stop time, not since animation beginning
@@ -31,7 +31,7 @@ var slotMachine = {
     //- { success: true, reels: [1,2.5,3], prize: null, credits: 9, dayWinnings: 10, lifetimeWinnings: 500 }
 
 
-
+    questionSet: null,
     //curBet: minBet,
     soundEnabled: true,
     sounds: {},
@@ -45,16 +45,16 @@ var slotMachine = {
 
         //$('#soundOffButton').click(function() { slotMachine.toggle_sound(); });
 
-        //if (slotMachine.soundEnabled)  {
-        //	soundManager.setup({
-        //		url: "/js/",
-        //		onready: function() {
-        //			slotMachine.sounds['payout'] = soundManager.createSound({id: "payout", url: 'sounds/payout.mp3'});
-        //			slotMachine.sounds['fastpayout'] = soundManager.createSound({id: "fastpayout", url: 'sounds/fastpayout.mp3'});
-        //			slotMachine.sounds['spinning'] = soundManager.createSound({id: "spinning", url: 'sounds/spinning.mp3'});
-        //		}
-        //	});
-        //}
+        if (slotMachine.soundEnabled)  {
+        	soundManager.setup({
+        		url: "/js/",
+        		onready: function() {
+        			slotMachine.sounds['payout'] = soundManager.createSound({id: "payout", url: '/sounds/payout.mp3'});
+        			slotMachine.sounds['fastpayout'] = soundManager.createSound({id: "fastpayout", url: '/sounds/fastpayout.mp3'});
+        			slotMachine.sounds['spinning'] = soundManager.createSound({id: "spinning", url: '/sounds/spinning.mp3'});
+        		}
+        	});
+        }
 
         //if (slotMachine.get_balance() < minBet) {
         //	slotMachine.disable_spin_button();
@@ -156,8 +156,8 @@ var slotMachine = {
         window.setTimeout(function () { FirstReelTimeoutHit = true; if (spinData != null) { fnStopReelsAndEndSpin(); } }, slotMachine.firstReelStopTime);
 
         var getResults = function () {
-            var questionSet = Math.floor(Math.random() * 6) + 1;
-            return { success: true, reels: [questionSet, questionSet, questionSet], prize: null, credits: 10, dayWinnings: 10, lifetimeWinnings: 500 }
+            questionSet = Math.floor(Math.random() * 4) + 1;
+            return { success: true, reels: [questionSet, questionSet, questionSet], prize: 1, credits: 10, dayWinnings: 10, lifetimeWinnings: 500 }
         }
 
         spinData = getResults();
@@ -236,6 +236,8 @@ var slotMachine = {
         slotMachine.spinning = false;
 
         slotMachine.enable_spin_button();
+
+        window.location.href = "/home/Q1/" + userId + "/" + questionSet;
     },
 
     _increment_payout_counter: function (data) {

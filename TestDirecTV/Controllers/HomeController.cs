@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestDirecTV.Models;
 
 namespace TestDirecTV.Controllers
 {
@@ -18,33 +19,40 @@ namespace TestDirecTV.Controllers
         }
 
         [Route("Slots/{userId:int}")]
-        public ActionResult Index2()
+        public ActionResult Index2(int userId)
         {
             ViewBag.Title = "Slots";
-
-            return View();
+            SlotsViewModel model = new SlotsViewModel();
+            model.UserId = userId;
+            return View(model);
         }
 
         [Route("Q1/{userId:int}/{questionSet:int}")]
-        public ActionResult Index3()
+        public ActionResult Index3(int userId, int questionSet)
         {
             ViewBag.Title = "Q1";
-
-            return View();
+            SlotsViewModel model = new SlotsViewModel();
+            model.UserId = userId;
+            model.QuestionSet = questionSet;
+            return View(model);
         }
         [Route("Q2/{userId:int}/{questionSet:int}")]
-        public ActionResult Index4()
+        public ActionResult Index4(int userId, int questionSet)
         {
             ViewBag.Title = "Q2";
-
-            return View();
+            SlotsViewModel model = new SlotsViewModel();
+            model.UserId = userId;
+            model.QuestionSet = questionSet;
+            return View(model);
         }
         [Route("Q3/{userId:int}/{questionSet:int}")]
-        public ActionResult Index5()
+        public ActionResult Index5(int userId, int questionSet)
         {
             ViewBag.Title = "Q3";
-
-            return View();
+            SlotsViewModel model = new SlotsViewModel();
+            model.UserId = userId;
+            model.QuestionSet = questionSet;
+            return View(model);
         }
         
         [Route("Scoreboard")]

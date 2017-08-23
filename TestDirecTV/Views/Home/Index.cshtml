@@ -81,6 +81,7 @@
         onPostSuccess = function (data) {
             console.log(data.item);
             updateId = data.item;
+            window.location.href = "/Home/Slots/" + updateId;
         }
         onPostError = function (jqxhr) {
             var errorMessage = "Error adding Player:" + jqxhr.responseJSON.message;
