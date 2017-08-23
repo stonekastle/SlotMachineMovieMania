@@ -45,7 +45,7 @@ namespace TestDirecTV.Controllers
             return View();
         }
         
-        public ActionResult Index6()
+        public ActionResult Scoreboard()
         {
             ViewBag.Title = "Scoreboard";
 
