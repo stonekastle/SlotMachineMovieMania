@@ -35,5 +35,29 @@ namespace TestDirecTV.Controllers.Api
             }
         }
 
+
+
+        [HttpGet]
+        [Route("Scoreboard")]
+        public HttpResponseMessage GetAll()
+        {
+            BaseResponse response = null;
+            HttpStatusCode statusCode = HttpStatusCode.OK;
+            try
+            {
+                ItemsResponse<ScoreboardDomain> itemsResponse = new ItemsResponse<ScoreboardDomain>();
+                
+                response = itemsResponse;
+                statusCode = HttpStatusCode.OK;
+            }
+            catch (Exception Error)
+            {
+                response = new ErrorResponse(Error);
+                statusCode = HttpStatusCode.InternalServerError;
+            }
+            return Request.CreateResponse(statusCode, response);
+        }
+
+
     }
 }
