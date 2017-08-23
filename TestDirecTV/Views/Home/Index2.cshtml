@@ -3,58 +3,53 @@
     ViewBag.Title = "Index2";
 }
 
-<h1 style="color:white; font-family:verdana; font-size:300%; text-align:center;">Film Challenge</h1>
-<h3 style="color:white; font-family:verdana; font-size:200%; text-align:center;">Try your luck</h3>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Slot Machine</title>
-	<link type="text/css" rel="stylesheet" href="css/slots.css" />
-	<link type="text/css" rel="stylesheet" href="css/template1.css" />
-</head>
-
-<body>
+<link type="text/css" rel="stylesheet" href="~/css/slots.css" />
+<link type="text/css" rel="stylesheet" href="~/css/template1.css" />
 
 <div id="PageContainer">
-	<div id="PageContainerInner"> <!-- Just to be able to set the "won!" extra background -->
+    <div id="PageContainerInner">
+        <!-- Just to be able to set the "won!" extra background -->
 
-		<div id="slotMachineContainer">
+        <div id="slotMachineContainer">
 
-			<div id="ReelContainer">
-				<div id="reel1" class="reel"></div>
-				<div id="reel2" class="reel"></div>
-				<div id="reel3" class="reel"></div>
-				<div id="reelOverlay"></div>
-			</div>
+            <div id="ReelContainer">
+                <div id="reel1" class="reel"></div>
+                <div id="reel2" class="reel"></div>
+                <div id="reel3" class="reel"></div>
+                <div id="reelOverlay"></div>
+            </div>
 
-			<div id="loggedOutMessage" style="display: none;"><span class="large">Sorry, you have been logged off.</span><br />
-				<b>No bids</b> have been deducted from this spin, because you're not logged in anymore.
-				Please <a href="/login">login</a> and try again.
-			</div>
+            <div id="loggedOutMessage" style="display: none;">
+                <span class="large">Sorry, you have been logged off.</span><br />
+                <b>No bids</b> have been deducted from this spin, because you're not logged in anymore.
+                Please <a href="/login">login</a> and try again.
+            </div>
 
-			<div id="failedRequestMessage" style="display: none;"><span class="large">Sorry, we're unable to display your spin because your connection to our server was lost. </span><br />
-				Rest assured that your spin was not wasted.
-				Please check your connection and <a href="#" onclick="window.location.reload();">refresh</a> to try again.
-			</div>
-			
+            <div id="failedRequestMessage" style="display: none;">
+                <span class="large">Sorry, we're unable to display your spin because your connection to our server was lost. </span><br />
+                Rest assured that your spin was not wasted.
+                Please check your connection and <a href="#" onclick="window.location.reload();">refresh</a> to try again.
+            </div>
 
-			<div id="spinButton"></div>
-		</div>
 
-		<div id="soundOffButton"></div>
+            <div id="spinButton"></div>
+        </div>
 
-		<script type="text/javascript">
-			var machineName = '<?php echo $machineName; ?>';
-			
-			var numIconsPerReel = <?php echo $numIconsPerReel; ?>;
-			var windowID = <?php echo $windowID; ?>;
-		</script>
-		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
-		<script type="text/javascript" src="js/soundmanager2.js"></script>
-		<script type="text/javascript" src="js/slots.js"></script>
-	</div>
+        @*<div id="soundOffButton"></div>*@
+
+    </div>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    <script type="text/javascript">
+        var machineName = '';
+
+        var numIconsPerReel = '';
+        var windowID = '';
+    </script>
+    <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="~/js/soundmanager2.js"></script>
+    <script type="text/javascript" src="~/js/slots.js"></script>
+
+}
