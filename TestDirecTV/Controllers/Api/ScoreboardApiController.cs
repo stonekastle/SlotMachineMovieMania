@@ -37,7 +37,7 @@ namespace TestDirecTV.Controllers.Api
 
 
         [HttpGet]
-        [Route("Scoreboard")]
+        [Route]
         public HttpResponseMessage GetAll()
         {
             BaseResponse response = null;
@@ -45,7 +45,7 @@ namespace TestDirecTV.Controllers.Api
             try
             {
                 ItemsResponse<ScoreboardDomain> itemsResponse = new ItemsResponse<ScoreboardDomain>();
-                
+                itemsResponse.Items = _scoreboardService.SelectAll();
                 response = itemsResponse;
                 statusCode = HttpStatusCode.OK;
             }

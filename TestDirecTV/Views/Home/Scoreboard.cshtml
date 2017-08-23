@@ -3,16 +3,74 @@
     ViewBag.Title = "Scoreboard";
 }
 
-<h2>Scoreboard</h2>
+<div class="Scoreboard" id="Scoreboard">
 
-<div>
+    <h1 style="color:dodgerblue; font-family:verdana; font-size:300%; text-align:center;">Scoreboard</h1>
 
 </div>
 
-<script>
+
+
+
+<script type="text/template" id="template">
+    <div class="content">
+        <div class="col-sm-4 firstName">
+
+        </div>
+        <div class="col-sm-4 lastName">
+
+        </div>
+        <div class="col-sm-4 score">
+
+        </div>
+
+    </div>
+
 
 </script>
 
-$(document).ready(function(){
 
-})
+
+
+
+<script>
+    $(document).ready(function () {
+        getAll(onGetAllSuccess, onGetAllError)
+
+    });
+
+    var getAll = function (data, onGetAllSuccess, onGetAllSuccess) {
+        var url = "/api/scoreboard/";
+        var settings = {
+            cache: false
+            , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            , data: data
+            , dataType: "json"
+            , success: onGetAllSuccess
+            , error: onGetAllSuccess
+            , type: "GET"
+        }
+
+        $.ajax(url, settings);
+
+        console.log("Get 'em");
+    }
+
+
+
+    var onGetAllSuccess = function (data) {
+        for (var i = 0; i < data.items.length; i++) {
+            var $temp = $($("#template").html());
+            $temp.find("firstName").text(data.items[i].FirstName);
+            $temp.find("lastName").text(data.items[i].LastName);
+            $temp.find("score").text(data.items[i].Score);
+        }
+    }
+
+    var onGetAllError = function (data) {
+        console.log(data);
+    }
+
+
+</script>
+

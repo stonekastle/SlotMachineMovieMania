@@ -79,8 +79,9 @@
 
 
         onPostSuccess = function (data) {
-            console.log(data.item);
-            updateId = data.item;
+            //console.log(data.item);
+            console.log(data);
+            var updateId = data.Item;
             window.location.href = "/Home/Slots/" + updateId;
         }
         onPostError = function (jqxhr) {

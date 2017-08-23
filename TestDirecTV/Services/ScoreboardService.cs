@@ -69,6 +69,7 @@ namespace TestDirecTV.Services
                     {
                         myList = new List<ScoreboardDomain>();
                     }
+                    myList.Add(ScoreboardObj);
                 });
                 return myList;
             }
