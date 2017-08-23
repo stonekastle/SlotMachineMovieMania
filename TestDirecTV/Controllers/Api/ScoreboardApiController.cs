@@ -36,7 +36,6 @@ namespace TestDirecTV.Controllers.Api
         }
 
 
-
         [HttpGet]
         [Route("Scoreboard")]
         public HttpResponseMessage GetAll()
