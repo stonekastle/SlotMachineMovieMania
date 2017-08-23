@@ -3,74 +3,55 @@
     ViewBag.Title = "Scoreboard";
 }
 
-<div class="Scoreboard" id="Scoreboard">
-
+<div class="Scoreboard" id="scoreboard">
     <h1 style="color:dodgerblue; font-family:verdana; font-size:300%; text-align:center;">Scoreboard</h1>
-
 </div>
-
-
-
 
 <script type="text/template" id="template">
     <div class="content">
         <div class="col-sm-4 firstName">
-
         </div>
         <div class="col-sm-4 lastName">
-
         </div>
         <div class="col-sm-4 score">
-
         </div>
-
     </div>
-
-
 </script>
-
-
-
-
 
 <script>
     $(document).ready(function () {
         getAll(onGetAllSuccess, onGetAllError)
-
     });
 
-    var getAll = function (data, onGetAllSuccess, onGetAllSuccess) {
-        var url = "/api/scoreboard/";
+    var getAll = function (onGetAllSuccess, onGetAllError) {
+        var url = "/api/scoreboard";
         var settings = {
             cache: false
-            , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-            , data: data
+            //, contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            //, data: data
             , dataType: "json"
             , success: onGetAllSuccess
-            , error: onGetAllSuccess
+            , error: onGetAllError
             , type: "GET"
         }
 
         $.ajax(url, settings);
-
         console.log("Get 'em");
     }
 
-
-
     var onGetAllSuccess = function (data) {
-        for (var i = 0; i < data.items.length; i++) {
+        for (var i = 0; i < data.Items.length; i++) {
             var $temp = $($("#template").html());
-            $temp.find("firstName").text(data.items[i].FirstName);
-            $temp.find("lastName").text(data.items[i].LastName);
-            $temp.find("score").text(data.items[i].Score);
+            $temp.find(".firstName").text(data.Items[i].FirstName);
+            $temp.find(".lastName").text(data.Items[i].LastName);
+            $temp.find(".score").text(data.Items[i].Score);
+
+            $("#scoreboard").append($temp);
         }
     }
 
     var onGetAllError = function (data) {
         console.log(data);
     }
-
-
 </script>
 
