@@ -11,30 +11,30 @@ using TestDirecTV.Models.Requests;
 
 namespace TestDirecTV.Services
 {
-    public class ScoreboardService : BaseService, InterfaceScoreboardService
+    public class ScoreboardService : BaseService /*,InterfaceScoreboardService*/
     {
-        public void Delete(int id)
-        {
-            DataProvider.ExecuteNonQuery(GetConnection
-                , "dbo.Scoreboard_Delete"
-                , inputParamMapper: delegate (SqlParameterCollection paramCollection)
-                    {
-                        paramCollection.AddWithValue("@id", id);
-                    }
-                , returnParameters: null);
+        //public void Delete(int id)
+        //{
+        //    DataProvider.ExecuteNonQuery(GetConnection
+        //        , "dbo.Scoreboard_Delete"
+        //        , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+        //            {
+        //                paramCollection.AddWithValue("@id", id);
+        //            }
+        //        , returnParameters: null);
             
-        }//Delete (byId)
+        //}//Delete (byId)
 
-        public void DeleteByLastName(string LastName)
-        {
-            DataProvider.ExecuteNonQuery(GetConnection
-               ,"dbo.Scoreboard_DeleteByLastName"
-               , inputParamMapper: delegate (SqlParameterCollection paramCollection)
-                    {
-                        paramCollection.AddWithValue("@lastName", LastName);
-                    }
-               , returnParameters: null);
-        }
+        //public void DeleteByLastName(string LastName)
+        //{
+        //    DataProvider.ExecuteNonQuery(GetConnection
+        //       ,"dbo.Scoreboard_DeleteByLastName"
+        //       , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+        //            {
+        //                paramCollection.AddWithValue("@lastName", LastName);
+        //            }
+        //       , returnParameters: null);
+        //}
 
         public int Insert(ScoreboardAddRequest model)
         {
@@ -74,22 +74,22 @@ namespace TestDirecTV.Services
                 return myList;
             }
 
-        public ScoreboardDomain SelectById(int id)
-        {
-            ScoreboardDomain scoreboard = null;
-            DataProvider.ExecuteCmd(GetConnection
-                , "dbo.Scoreboard_SeclectById"
-                , inputParamMapper: delegate (SqlParameterCollection paramCollection)
-                    {
-                        paramCollection.AddWithValue("@Id", id);
-                    }
-                , map: delegate (IDataReader reader, short set)
-                    {
-                        scoreboard = MapScoreboard(reader);
-                    }
-            );
-            return scoreboard;
-        }
+        //public ScoreboardDomain SelectById(int id)
+        //{
+        //    ScoreboardDomain scoreboard = null;
+        //    DataProvider.ExecuteCmd(GetConnection
+        //        , "dbo.Scoreboard_SeclectById"
+        //        , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+        //            {
+        //                paramCollection.AddWithValue("@Id", id);
+        //            }
+        //        , map: delegate (IDataReader reader, short set)
+        //            {
+        //                scoreboard = MapScoreboard(reader);
+        //            }
+        //    );
+        //    return scoreboard;
+        //}
 
         public void Update(ScoreboardUpdateRequest model)
         {        
@@ -97,7 +97,7 @@ namespace TestDirecTV.Services
                 , "dbo.Scoreboard_Update"
                 , inputParamMapper: delegate (SqlParameterCollection paramCollection)
                     {                      
-                        paramCollection.AddWithValue("@Score", model.Score);
+                        paramCollection.AddWithValue("@Id", model.Id);
                         
                     }
                 , returnParameters: null

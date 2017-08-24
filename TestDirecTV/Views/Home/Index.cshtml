@@ -51,9 +51,6 @@
             $('#submit').on('click', scoreboardFormSubmit);
         });
 
-
-
-
         var scoreboardFormSubmit = function () {
             console.log("fired to scoreboard!")
             var myData = $("#scoreboardForm").serialize();
@@ -73,10 +70,8 @@
                 , error: onPostError
                 , type: "POST"
             }
-
             $.ajax(url, settings);
         }
-
 
         onPostSuccess = function (data) {
             //console.log(data.item);
@@ -84,6 +79,7 @@
             var updateId = data.Item;
             window.location.href = "/Home/Slots/" + updateId;
         }
+
         onPostError = function (jqxhr) {
             var errorMessage = "Error adding Player:" + jqxhr.responseJSON.message;
         }

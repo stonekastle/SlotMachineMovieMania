@@ -57,6 +57,28 @@ namespace TestDirecTV.Controllers.Api
             return Request.CreateResponse(statusCode, response);
         }
 
-
+        [HttpPut]
+        [Route]
+        public HttpResponseMessage Put(ScoreboardUpdateRequest model)
+        {
+            BaseResponse response = null;
+            HttpStatusCode statusCode = new HttpStatusCode();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                _scoreboardService.Update(model);
+                response = new SuccessResponse();
+                statusCode = HttpStatusCode.OK;
+            }
+            catch (Exception Error)
+            {
+                response = new ErrorResponse(Error);
+                statusCode = HttpStatusCode.InternalServerError;
+            }
+            return Request.CreateResponse(statusCode, response);
+        }
     }
 }

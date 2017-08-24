@@ -20,24 +20,24 @@
     var questionSet = @Model.QuestionSet;
     var questions = [
         {
-            question: "Star of Bourne?",
-            answers: ["Matt Damon", "Morgan Freeman", "Christian Bale", "Hugh Jackman"],
-            correct: 0
+            question: "How many Bourne movies have been filmed?",
+            answers: ["Four", "Five", "Six", "Seven"],
+            correct: 1
         },
         {
             question: "Touchdown points??",
-            answers: ["1", "3", "6", "7"],
+            answers: ["2", "3", "6", "7"],
             correct: 2
         },
         {
-            question: "How many answer choices?",
-            answers: ["1", "2", "3", "4"],
-            correct: 3
+            question: "Lisbon is the capital of what country?",
+            answers: ["Morocco", "Czechia", "Portugal", "Turkey"],
+            correct: 2
         },
         {
-            question: "First day of work week?",
-            answers: ["Monday", "Tuesday", "Friday", "Sunday"],
-            correct: 0
+            question: "Which film did NOT win the Best Picture Oscar?",
+            answers: ["Moonlight", "Spotlight", "The Revenant", "12 Years a Slave"],
+            correct: 2
         }
     ]
 
@@ -63,9 +63,35 @@
     }
     
     var doThings = function() {
-        var result = $(this).hasClass("correct");
+        var result = $(this).hasClass("correct")
+        if (result == true){
+            put(userId, onPutSuccess, onPutError);
+        }
+        
         console.log("result", result)
         setTimeout(function(){ window.location.href = "/home/Q2/" + userId + "/" + questionSet }, 10000)
     }
 
+
+    var put = function(onPutSuccess, onPutError){
+        var url = "/api/scoreboard/";
+        var settings = {
+            cache: false
+            , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            , data: "Id=" + userId
+            , dataType: "json"
+            , success: onPutSuccess
+            , error: onPutError
+            , type: "PUT"
+        };
+        $.ajax(url, settings);
+    }
+
+    var onPutSuccess = function (data){
+        console.log("Put success")
+    }
+
+    var onPutError = function (data){
+        console.log("Put error")
+    }
 </script>
