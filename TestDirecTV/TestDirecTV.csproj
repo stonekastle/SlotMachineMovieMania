@@ -251,6 +251,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\background.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\machine.png" />
     <Content Include="Images\template1\main_bg.jpg" />
