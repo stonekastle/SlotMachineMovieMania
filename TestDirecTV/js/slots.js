@@ -3,21 +3,37 @@ var slotMachine = {
     // Set the proper height for the reels in the CSS file, rule: #slotMachineContainer #ReelContainer .reel
     // Set it to 3 * stripHeight
     // Also set the top property to the initial position you want to show
-    stripHeight: 720, // Update this to match the strip PNG
-    alignmentOffset: 100, // Play around with this until reels are properly aligned post-spin
+    stripHeight:720, // Update this to match the strip PNG
+    //stripHeight: 5760,
+    //alignmentOffset: 100, // Play around with this until reels are properly aligned post-spin
+    alignmentOffset: 1,
 
-    firstReelStopTime: 667,
-    secondReelStopTime: 575, // since first reel's stop time, not since animation beginning
-    thirdReelStopTime: 568, // since second reel's stop time, not since animation beginning
-    payoutStopTime: 700, // since last reel's stop time, not since animation beginning
+
+
+
+    //firstReelStopTime: 667,
+    firstReelStopTime: 5336,
+    //secondReelStopTime: 575, // since first reel's stop time, not since animation beginning
+    secondReelStopTime: 4600,
+    //thirdReelStopTime: 568, // since second reel's stop time, not since animation beginning
+    thirdReelStopTime: 4544,
+    //payoutStopTime: 700, // since last reel's stop time, not since animation beginning
+    payoutStopTime: 4000,
+
 
     reelSpeedDifference: 0, // speed difference between the 3 reels
-    reelSpeed1Delta: 100, // "Fast speed" 
+    //reelSpeed1Delta: 100, // "Fast speed" 
+    reelSpeed1Delta: 25,
     reelSpeed1Time: 0, // How long does fast speed lasts.
-    reelSpeed2Delta: 100, // Slow speed
+    //reelSpeed1Time: 0,
+    //reelSpeed2Delta: 100, // Slow speed
+    reelSpeed2Delta: 10,
 
+    //positioningTime: 200,
     positioningTime: 200,
+    //bounceHeight: 200,
     bounceHeight: 200,
+    //bounceTime: 1000,
     bounceTime: 1000,
 
     winningsFormatPrefix: '',  // If winnings are "money", set prefix to be '$', '£', etc. If everything is unit-less, leave as is.
@@ -311,6 +327,7 @@ var slotMachine = {
             curPos += i * slotMachine.reelSpeedDifference;
             if (curPos > 0) { curPos = -slotMachine.stripHeight * 2; }
         };
+        //var timerID = window.setInterval(fnAnimation, 20);
         var timerID = window.setInterval(fnAnimation, 20);
         elReel.data("spinTimer", timerID);
     },
@@ -322,9 +339,11 @@ var slotMachine = {
 
 
         if (outcome != null) {
-            // the whole strip repeats thrice, so we don't have to care about looping
+            // the whole strip repeats thrice, so we don't have to care about looping   
             // alignmentOffset is kind of empirical...
+            //var numIconsPerReel = slotMachine.stripHeight / 48;  //this is Chris' comment trying to establish numIconsPerReel
             var distanceBetweenIcons = slotMachine.stripHeight / window.numIconsPerReel;
+            //var distanceBetweenIcons = numIconsPerReel; // this is also Chris' comment which proved fruitless
             var finalPosition = -slotMachine.stripHeight - ((outcome - 1) * distanceBetweenIcons) + slotMachine.alignmentOffset;
 
 

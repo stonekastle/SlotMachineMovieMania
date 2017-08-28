@@ -251,7 +251,12 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\background.jpg" />
+    <Content Include="Images\ATT Dan Created.gif" />
+    <Content Include="Images\Blackcoat%27s daughter.png" />
+    <Content Include="Images\Equals.png" />
+    <Content Include="Images\FamilyMan.png" />
+    <Content Include="Images\greyBg.jpg" />
+    <Content Include="Images\IntoTheForest.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\machine.png" />
     <Content Include="Images\template1\main_bg.jpg" />
@@ -300,6 +305,9 @@
     <Content Include="Images\template5\spin_button.png" />
     <Content Include="Images\template5\sprites.png" />
     <Content Include="Images\template5\won_bg.png" />
+    <Content Include="Images\TheException-webcamPhoto.png" />
+    <Content Include="Images\TheException.png" />
+    <Content Include="Images\WebCamPhotoSample.png" />
     <Content Include="index.php" />
     <Content Include="js\jquery-1.7.1.min.js" />
     <Content Include="js\jquery-ui-1.8.17.custom.min.js" />
@@ -382,6 +390,7 @@
     <Content Include="Views\Home\Scoreboard.cshtml" />
     <Content Include="Views\Home\Index4.cshtml" />
     <Content Include="Views\Home\Index5.cshtml" />
+    <Content Include="Views\Shared\ScratchLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

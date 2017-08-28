@@ -1,7 +1,9 @@
 body {
 	background: url(../images/template2/main_bg.png) top center no-repeat;
 }
-#PageContainer { background: transparent url(../images/template2/main_bg_machine.png) top center no-repeat; }
+#PageContainer { background: transparent url(../images/template2/main_bg_machine.png) top center no-repeat;
+                 background-size: cover;
+}
 #PageContainer.won #PageContainerInner {
 	background: transparent url(../images/template2/won_bg.png) 294px 186px no-repeat;
 }
@@ -11,6 +13,7 @@ body {
 #slotMachineContainer #spinButton {
 	left: 342px; top: 335px; width: 127px; height: 80px;
 	background: transparent url(../images/template2/spin_button.png) 0 0 no-repeat;
+    /*background: transparent url('../images/ATT Dan Created.gif') 0 0 no-repeat;*/
 }
 
 #slotMachineContainer #betContainer { top: 347px; left: 0; width: 355px; height: 65px; }
@@ -36,6 +39,8 @@ body {
 
 #slotMachineContainer #ReelContainer .reel {
 	height: 3240px; /* set the height to 3 * the strip PNG height */
+    /*height: 25920px; /* this number is our reel hieght (5760) multiplied by 4.5 (because his default 3240 is 4.5 times his reel height of 720, not 3 times the reel height like he told us to do which did not work)*/
+    /*height: 10000px;*/
 	background: transparent url(../images/template2/reel_strip.png) 0 0 repeat-y;
 }
 

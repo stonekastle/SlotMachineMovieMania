@@ -6,37 +6,69 @@
 <link type="text/css" rel="stylesheet" href="~/css/slots.css" />
 <link type="text/css" rel="stylesheet" href="~/css/template2.css" />
 
-<div id="PageContainer">
-    <div id="PageContainerInner">
-        <!-- Just to be able to set the "won!" extra background -->
 
-        <div id="slotMachineContainer">
 
-            <div id="ReelContainer">
-                <div id="reel1" class="reel"></div>
-                <div id="reel2" class="reel"></div>
-                <div id="reel3" class="reel"></div>
-                <div id="reelOverlay"></div>
+
+<div class="container-fluid">
+    <div id="PageContainer" style="background-size:cover;">
+        <div id="PageContainerInner">
+            <!-- Just to be able to set the "won!" extra background -->
+
+            <div id="slotMachineContainer">
+
+                <div id="ReelContainer">
+                    <div id="reel1" class="reel"></div>
+                    <div id="reel2" class="reel"></div>
+                    <div id="reel3" class="reel"></div>
+                    <div id="reelOverlay"></div>
+                </div>
+
+                <div id="loggedOutMessage" style="display: none;">
+                    <span class="large">Sorry, you have been logged off.</span><br />
+                    <b>No bids</b> have been deducted from this spin, because you're not logged in anymore.
+                    Please <a href="/login">login</a> and try again.
+                </div>
+
+                <div id="failedRequestMessage" style="display: none;">
+                    <span class="large">Sorry, we're unable to display your spin because your connection to our server was lost. </span><br />
+                    Rest assured that your spin was not wasted.
+                    Please check your connection and <a href="#" onclick="window.location.reload();">refresh</a> to try again.
+                </div>
+
+
+                <div id="spinButton"></div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
 
-            <div id="loggedOutMessage" style="display: none;">
-                <span class="large">Sorry, you have been logged off.</span><br />
-                <b>No bids</b> have been deducted from this spin, because you're not logged in anymore.
-                Please <a href="/login">login</a> and try again.
-            </div>
+            @*<div id="soundOffButton"></div>*@
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
-            <div id="failedRequestMessage" style="display: none;">
-                <span class="large">Sorry, we're unable to display your spin because your connection to our server was lost. </span><br />
-                Rest assured that your spin was not wasted.
-                Please check your connection and <a href="#" onclick="window.location.reload();">refresh</a> to try again.
-            </div>
 
-
-            <div id="spinButton"></div>
         </div>
-
-        @*<div id="soundOffButton"></div>*@
-
     </div>
 </div>
 
