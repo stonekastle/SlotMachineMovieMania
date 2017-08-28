@@ -27,9 +27,9 @@ a img { border: none; }
 #slotMachineContainer #spinButton {
 	position: absolute; cursor: pointer;
 }
-#slotMachineContainer #spinButton:hover { background-position: 0 -100px; }
-#slotMachineContainer #spinButton:active { background-position: 0 -200px; }
-#slotMachineContainer #spinButton.disabled { background-position: 0 -300px; }
+#slotMachineContainer #spinButton:hover { /*background-position: 0 -100px;*/ color:aqua}
+#slotMachineContainer #spinButton:active { /*background-position: 0 -200px;*/ color:navy}
+#slotMachineContainer #spinButton.disabled { /*background-position: 0 -300px;*/ }
 
 #slotMachineContainer #betContainer {
 	position: absolute;

@@ -30,7 +30,7 @@ body {
 
 #slotMachineContainer #spinButton {
 	left: 354px; top: 304px; width: 104px; height: 66px;
-	background: transparent url(../images/template1/spin_button.png) 0 0 no-repeat;
+	background: transparent url('../images/ATT Dan Created.gif') 0 0 no-repeat;
 }
 
 #slotMachineContainer #betContainer { top: 304px; left: 0; width: 355px; height: 65px; }

@@ -12,8 +12,9 @@ body {
 
 #slotMachineContainer #spinButton {
 	left: 342px; top: 335px; width: 127px; height: 80px;
-	background: transparent url(../images/template2/spin_button.png) 0 0 no-repeat;
+	/*background: transparent url(../images/template2/spin_button.png) 0 0 no-repeat;*/
     /*background: transparent url('../images/ATT Dan Created.gif') 0 0 no-repeat;*/
+    background:transparent url('/Images/logo.png') 0 0 no-repeat; 
 }
 
 #slotMachineContainer #betContainer { top: 347px; left: 0; width: 355px; height: 65px; }
