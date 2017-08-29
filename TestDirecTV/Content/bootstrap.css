@@ -31,9 +31,15 @@
     background-size:cover;
 }
 
+.enemy{
+    background:url("/Images/Enemy.png") no-repeat center center fixed;
+    background-size:cover;
+}
+
 .clearBackground {
     background-color: transparent;
 }
+
 
 
 html {
