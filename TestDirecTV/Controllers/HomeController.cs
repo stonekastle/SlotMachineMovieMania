@@ -10,25 +10,30 @@ namespace TestDirecTV.Controllers
     [RoutePrefix("Home")]
     public class HomeController : Controller
     {
-        [Route("Index")]
-        public ActionResult Index()
+        [Route("newuser")]
+        public ActionResult NewUser()
         {
             ViewBag.Title = "Home Page";
 
             return View();
         }
 
-        [Route("Slots/{userId:int}")]
-        public ActionResult Index2(int userId)
+        [Route("slots")]
+        public ActionResult Slots()
         {
             ViewBag.Title = "Slots";
-            SlotsViewModel model = new SlotsViewModel();
-            model.UserId = userId;
-            return View(model);
+            return View();
+        }
+
+        [Route("questions")]
+        public ActionResult Questions()
+        {
+            ViewBag.Title = "Questions";
+            return View();
         }
 
         [Route("Q1/{userId:int}/{questionSet:int}")]
-        public ActionResult Index3(int userId, int questionSet)
+        public ActionResult Q1(int userId, int questionSet)
         {
             ViewBag.Title = "Q1";
             SlotsViewModel model = new SlotsViewModel();
@@ -37,7 +42,7 @@ namespace TestDirecTV.Controllers
             return View(model);
         }
         [Route("Q2/{userId:int}/{questionSet:int}")]
-        public ActionResult Index4(int userId, int questionSet)
+        public ActionResult Q2(int userId, int questionSet)
         {
             ViewBag.Title = "Q2";
             SlotsViewModel model = new SlotsViewModel();
@@ -46,7 +51,7 @@ namespace TestDirecTV.Controllers
             return View(model);
         }
         [Route("Q3/{userId:int}/{questionSet:int}")]
-        public ActionResult Index5(int userId, int questionSet)
+        public ActionResult Q3(int userId, int questionSet)
         {
             ViewBag.Title = "Q3";
             SlotsViewModel model = new SlotsViewModel();

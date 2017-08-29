@@ -251,9 +251,26 @@ var slotMachine = {
 
         slotMachine.spinning = false;
 
+        var url = "/api/scoreboard/questionset";
+        var settings = {
+            cache: false
+            , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            , data: "id=" + user.Id + "&questionset=" + questionSet
+            , dataType: "json"
+            , success: function (response) {
+                console.log("questionset success")
+            }
+            , error: function (response) {
+                console.log("questionset error")
+            }
+            , type: "PUT"
+        };
+        $.ajax(url, settings);
+
         slotMachine.enable_spin_button();
 
-        window.location.href = "/home/Q1/" + userId + "/" + questionSet;
+        //Code that tells user to go to next page
+        $("#PageContainer").remove();
     },
 
     _increment_payout_counter: function (data) {

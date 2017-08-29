@@ -3,31 +3,30 @@
     ViewBag.Title = "Index3";
 }
 
-
-
-<div class="container-fluid equals">
+<div class="container-fluid blackcoatsDaughter">
     <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
-
+    
+    
+    
     <div class="row">
-
-        <div class="col-sm-4"> 
-        <h1 style="color:#00629b; font-family:verdana; font-size:300%; text-align:right;">First Question</h1>
+        <div class="clearBackground">
+            <div class="col-md-4">
+                <h1 style="color:sandybrown; font-family:verdana; font-size:300%; text-align:center;">Third Question</h1>
+            </div>
         </div>
     </div>
     <br />
     <br />
     <br />
     <div class="row">
-        <div class="col-sm-5">
-
-        </div>
-        <div class="col-sm-7">
-            <div style="text-align:left; font-family:Verdana; color:#00a6d6; font-size:200%;"  id="questionContainer">
-                <div id="question">
-                </div>
-                <br />
-                <br />
-                <div id="answerContainer">
+        <div class="clearBackground">
+            <div class="col-md-4">
+                <div style="text-align:center; font-family:Verdana; color:#00629b; font-size:200%;" id="questionContainer">
+                    <div id="question">
+                    </div>
+                    <br />
+                    <div id="answerContainer">
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,9 +71,9 @@
 </div>
 
 <script type="text/template" id="template">
-
-    <button type="button" class="answer" id=""></button>
-
+    
+        <button type="button" class="answer" id=""></button>
+    
 </script>
 
 <script>
@@ -82,24 +81,24 @@
     var questionSet = @Model.QuestionSet;
     var questions = [
         {
-            question: "How many Bourne movies have been filmed?",
-            answers: ["Four", "Five", "Six", "Seven"],
+            question: "Star of Bourne?",
+            answers: ["Matt Damon", "Morgan Freeman", "Christian Bale", "Hugh Jackman"],
+            correct: 0
+        },
+        {
+            question: "How many Superbowls have been played?",
+            answers: ["49", "51", "56", "62"],
             correct: 1
         },
         {
-            question: "How many points are awarded in an NFL Touchdown?",
-            answers: ["2", "3", "6", "7"],
-            correct: 2
+            question: "Without the UK, how many countries make up the EU?",
+            answers: ["23", "18", "32", "27"],
+            correct: 3
         },
         {
-            question: "Lisbon is the capital of what country?",
-            answers: ["Morocco", "Czechia", "Portugal", "Turkey"],
-            correct: 2
-        },
-        {
-            question: "Which film did NOT win the Best Picture Oscar?",
-            answers: ["Moonlight", "Spotlight", "The Revenant", "12 Years a Slave"],
-            correct: 2
+            question: "Which film was awarded the most Oscars?",
+            answers: ["The English Patient", "Titanic", "Gone With The Wind", "Forest Gump"],
+            correct: 1
         }
     ]
 
@@ -131,12 +130,12 @@
         }
 
         console.log("result", result)
-        setTimeout(function(){ window.location.href = "/home/Q2/" + userId + "/" + questionSet }, 10000)
+        setTimeout(function(){ window.location.href = "/home/Scoreboard/" }, 10000)
     }
 
 
     var put = function(onPutSuccess, onPutError){
-        var url = "/api/scoreboard/";
+        var url = "/api/scoreboard/score";
         var settings = {
             cache: false
             , contentType: "application/x-www-form-urlencoded; charset=UTF-8"

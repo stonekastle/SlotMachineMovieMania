@@ -9,12 +9,7 @@ namespace TestDirecTV.Models.Requests
     public class ScoreboardAddRequest
     {
         [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
-        [Required]
+        public string ImageURL { get; set; }
         public int Score { get; set; }
-
-
     }
 }

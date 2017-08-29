@@ -2,7 +2,6 @@
 using TestDirecTV.Models.Requests;
 using TestDirecTV.Models.Responses;
 using TestDirecTV.Services;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +18,8 @@ namespace TestDirecTV.Controllers.Api
         ScoreboardService _scoreboardService = new ScoreboardService();
 
         [HttpPost]
-        [Route]
-        public HttpResponseMessage Create(ScoreboardAddRequest model)
+        [Route()]
+        public HttpResponseMessage CreateUser(ScoreboardAddRequest model)
         {
             try
             {
@@ -35,10 +34,9 @@ namespace TestDirecTV.Controllers.Api
             }
         }
 
-
         [HttpGet]
-        [Route]
-        public HttpResponseMessage GetAll()
+        [Route()]
+        public HttpResponseMessage GetAllUsers()
         {
             BaseResponse response = null;
             HttpStatusCode statusCode = HttpStatusCode.OK;
@@ -57,9 +55,30 @@ namespace TestDirecTV.Controllers.Api
             return Request.CreateResponse(statusCode, response);
         }
 
+        [HttpGet]
+        [Route("lastuser")]
+        public HttpResponseMessage GetLastUser()
+        {
+            BaseResponse response = null;
+            HttpStatusCode statusCode = HttpStatusCode.OK;
+            try
+            {
+                ItemResponse<ScoreboardDomain> itemResponse = new ItemResponse<ScoreboardDomain>();
+                itemResponse.Item = _scoreboardService.SelectLastCreated();
+                response = itemResponse;
+                statusCode = HttpStatusCode.OK;
+            }
+            catch (Exception Error)
+            {
+                response = new ErrorResponse(Error);
+                statusCode = HttpStatusCode.InternalServerError;
+            }
+            return Request.CreateResponse(statusCode, response);
+        }
+
         [HttpPut]
-        [Route]
-        public HttpResponseMessage Put(ScoreboardUpdateRequest model)
+        [Route("score")]
+        public HttpResponseMessage UpdateScore(ScoreboardUpdateRequest model)
         {
             BaseResponse response = null;
             HttpStatusCode statusCode = new HttpStatusCode();
@@ -69,7 +88,31 @@ namespace TestDirecTV.Controllers.Api
                 {
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
-                _scoreboardService.Update(model);
+                _scoreboardService.UpdateScore(model);
+                response = new SuccessResponse();
+                statusCode = HttpStatusCode.OK;
+            }
+            catch (Exception Error)
+            {
+                response = new ErrorResponse(Error);
+                statusCode = HttpStatusCode.InternalServerError;
+            }
+            return Request.CreateResponse(statusCode, response);
+        }
+
+        [HttpPut]
+        [Route("questionset")]
+        public HttpResponseMessage UpdateQuestionSet(ScoreboardUpdateRequest model)
+        {
+            BaseResponse response = null;
+            HttpStatusCode statusCode = new HttpStatusCode();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                _scoreboardService.UpdateQuestionSet(model);
                 response = new SuccessResponse();
                 statusCode = HttpStatusCode.OK;
             }

@@ -73,15 +73,36 @@
 </div>
 
 @section Scripts {
+    <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript">
-        var userId = @Model.UserId;
+        var user = {};
         var machineName = '';
 
         var numIconsPerReel = '';
         var windowID = '';
+        $(document).ready(function () {
+            getLastUser();
+        })
+
+        var getLastUser = function () {
+            var url = "/api/scoreboard/lastuser";
+            var settings = {
+                cache: false
+                , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+                , dataType: "json"
+                , success: function (response) {
+                    console.log("get success");
+                    user = response.Item;
+                }
+                , error: function (response) {
+                    console.log("get error");
+                }
+                , type: "GET"
+            };
+            $.ajax(url, settings);
+        }
     </script>
-    <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="~/js/soundmanager2.js"></script>
     <script type="text/javascript" src="~/js/slots.js"></script>
 
