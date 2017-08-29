@@ -34,6 +34,10 @@
         </div>
     </div>
 
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
     @*------------This section is left in because all the back-end wiring are connected to these two inputs, firstName and lastName-----------------------*@
     <div class="clearBackground">
         <div class="row">
@@ -81,6 +85,27 @@
 @section Scripts {
     <script type="text/javascript">
 
+        // Grab elements, create settings, etc.
+        var video = document.getElementById('video');
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function () {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+
+        // Get access to the camera!
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            });
+        }
+
         $(document).ready(function () {
             console.log("All systems are clear, Launch Control")
             $('#submit').on('click', scoreboardFormSubmit);
@@ -100,8 +125,12 @@
                 , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
                 , data: data
                 , dataType: "json"
-                , success: onPostSuccess
-                , error: onPostError
+                , success: function (data) {
+                    console.log("post success");
+                }
+                , error: function (data) {
+                    console.log("post error");
+                }
                 , type: "POST"
             }
             $.ajax(url, settings);
@@ -111,14 +140,5 @@
 
             setTimeout(function () { window.location.href = "/home/newuser/" }, 10000)
         }
-
-        onPostSuccess = function (data) {
-            console.log("post success");
-        }
-
-        onPostError = function (data) {
-            console.log("post error")
-        }
-
     </script>
 }
