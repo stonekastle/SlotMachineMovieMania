@@ -43,7 +43,7 @@ namespace TestDirecTV.Controllers.Api
             try
             {
                 ItemsResponse<ScoreboardDomain> itemsResponse = new ItemsResponse<ScoreboardDomain>();
-                itemsResponse.Items = _scoreboardService.SelectAll();
+                itemsResponse.Items = _scoreboardService.SelectAllFinished();
                 response = itemsResponse;
                 statusCode = HttpStatusCode.OK;
             }
@@ -56,8 +56,8 @@ namespace TestDirecTV.Controllers.Api
         }
 
         [HttpGet]
-        [Route("lastuser")]
-        public HttpResponseMessage GetLastUser()
+        [Route("lastcreated")]
+        public HttpResponseMessage GetLastCreated()
         {
             BaseResponse response = null;
             HttpStatusCode statusCode = HttpStatusCode.OK;
@@ -65,6 +65,27 @@ namespace TestDirecTV.Controllers.Api
             {
                 ItemResponse<ScoreboardDomain> itemResponse = new ItemResponse<ScoreboardDomain>();
                 itemResponse.Item = _scoreboardService.SelectLastCreated();
+                response = itemResponse;
+                statusCode = HttpStatusCode.OK;
+            }
+            catch (Exception Error)
+            {
+                response = new ErrorResponse(Error);
+                statusCode = HttpStatusCode.InternalServerError;
+            }
+            return Request.CreateResponse(statusCode, response);
+        }
+
+        [HttpGet]
+        [Route("lastunfinished")]
+        public HttpResponseMessage GetLastUnfinished()
+        {
+            BaseResponse response = null;
+            HttpStatusCode statusCode = HttpStatusCode.OK;
+            try
+            {
+                ItemResponse<ScoreboardDomain> itemResponse = new ItemResponse<ScoreboardDomain>();
+                itemResponse.Item = _scoreboardService.SelectLastUnfinished();
                 response = itemResponse;
                 statusCode = HttpStatusCode.OK;
             }
@@ -113,6 +134,30 @@ namespace TestDirecTV.Controllers.Api
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 _scoreboardService.UpdateQuestionSet(model);
+                response = new SuccessResponse();
+                statusCode = HttpStatusCode.OK;
+            }
+            catch (Exception Error)
+            {
+                response = new ErrorResponse(Error);
+                statusCode = HttpStatusCode.InternalServerError;
+            }
+            return Request.CreateResponse(statusCode, response);
+        }
+
+        [HttpPut]
+        [Route("finished")]
+        public HttpResponseMessage UpdateFinished(ScoreboardUpdateRequest model)
+        {
+            BaseResponse response = null;
+            HttpStatusCode statusCode = new HttpStatusCode();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                _scoreboardService.UpdateFinished(model);
                 response = new SuccessResponse();
                 statusCode = HttpStatusCode.OK;
             }

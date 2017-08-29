@@ -117,11 +117,11 @@ var slotMachine = {
     //},
 
     enable_spin_button: function () {
-        $('#spinButton').removeClass("disabled");
+        $('#spinButton').removeClass("disabledbutton");
     },
 
     disable_spin_button: function () {
-        $('#spinButton').addClass("disabled");
+        $('#spinButton').addClass("disabledbutton");
     },
 
     //----------------------------------------------------
@@ -267,10 +267,10 @@ var slotMachine = {
         };
         $.ajax(url, settings);
 
-        slotMachine.enable_spin_button();
-
         //Code that tells user to go to next page
         $("#PageContainer").remove();
+
+        setTimeout(function () { window.location.href = "/home/slots/" }, 10000)
     },
 
     _increment_payout_counter: function (data) {

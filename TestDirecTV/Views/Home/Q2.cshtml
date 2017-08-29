@@ -143,7 +143,7 @@
     var doThings = function() {
         var result = $(this).hasClass("correct")
         if (result == true){
-            put(userId, onPutSuccess, onPutError);
+            put();
         }
 
         console.log("result", result)
@@ -151,25 +151,21 @@
     }
 
 
-    var put = function(onPutSuccess, onPutError){
+    var put = function(){
         var url = "/api/scoreboard/score";
         var settings = {
             cache: false
             , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             , data: "Id=" + userId
             , dataType: "json"
-            , success: onPutSuccess
-            , error: onPutError
+            , success: function (data) {
+                console.log("Put success")
+            }
+            , error: function (data) {
+                console.log("Put error")
+            }
             , type: "PUT"
         };
         $.ajax(url, settings);
-    }
-
-    var onPutSuccess = function (data){
-        console.log("Put success")
-    }
-
-    var onPutError = function (data){
-        console.log("Put error")
     }
 </script>

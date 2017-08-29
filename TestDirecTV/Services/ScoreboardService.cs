@@ -32,11 +32,11 @@ namespace TestDirecTV.Services
             return id;
         }
 
-        public List<ScoreboardDomain> SelectAll()
+        public List<ScoreboardDomain> SelectAllFinished()
         {
             List<ScoreboardDomain> myList = null;
             DataProvider.ExecuteCmd(GetConnection
-                , "dbo.Users_SelectAll"
+                , "dbo.Users_SelectAllFinished"
                 , inputParamMapper: null
                 , map: delegate (IDataReader reader, short set)
                 {
@@ -64,6 +64,20 @@ namespace TestDirecTV.Services
             return scoreboard;
         }
 
+        public ScoreboardDomain SelectLastUnfinished()
+        {
+            ScoreboardDomain scoreboard = null;
+            DataProvider.ExecuteCmd(GetConnection
+                , "dbo.Users_SelectLastUnfinished"
+                , inputParamMapper: null
+                , map: delegate (IDataReader reader, short set)
+                {
+                    scoreboard = MapScoreboard(reader);
+                }
+            );
+            return scoreboard;
+        }
+
         public void UpdateScore(ScoreboardUpdateRequest model)
         {        
             DataProvider.ExecuteNonQuery(GetConnection
@@ -86,6 +100,20 @@ namespace TestDirecTV.Services
                 {
                     paramCollection.AddWithValue("@id", model.Id);
                     paramCollection.AddWithValue("@questionSet", model.QuestionSet);
+                }
+                , returnParameters: null
+            );
+
+        }
+
+        public void UpdateFinished(ScoreboardUpdateRequest model)
+        {
+            DataProvider.ExecuteNonQuery(GetConnection
+                , "dbo.Users_UpdateFinished"
+                , inputParamMapper: delegate (SqlParameterCollection paramCollection)
+                {
+                    paramCollection.AddWithValue("@id", model.Id);
+
                 }
                 , returnParameters: null
             );

@@ -5,7 +5,12 @@
 
 <link type="text/css" rel="stylesheet" href="~/css/slots.css" />
 <link type="text/css" rel="stylesheet" href="~/css/template2.css" />
-
+<style>
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+</style>
 
 
 
@@ -36,7 +41,7 @@
                 </div>
 
 
-                <div id="spinButton"></div>
+                <div id="spinButton" class="disabledbutton"></div>
                 <br />
                 <br />
                 <br />
@@ -75,6 +80,8 @@
 @section Scripts {
     <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="~/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="~/js/soundmanager2.js"></script>
+    <script type="text/javascript" src="~/js/slots.js"></script>
     <script type="text/javascript">
         var user = {};
         var machineName = '';
@@ -86,14 +93,20 @@
         })
 
         var getLastUser = function () {
-            var url = "/api/scoreboard/lastuser";
+            var url = "/api/scoreboard/lastcreated";
             var settings = {
                 cache: false
                 , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
                 , dataType: "json"
                 , success: function (response) {
                     console.log("get success");
-                    user = response.Item;
+                    if (response.Item) {
+                        user = response.Item;
+                        $("#spinButton").removeClass("disabledbutton");
+                    }
+                    else {
+                        setTimeout(function () { getLastUser() }, 1000)
+                    }
                 }
                 , error: function (response) {
                     console.log("get error");
@@ -103,7 +116,5 @@
             $.ajax(url, settings);
         }
     </script>
-    <script type="text/javascript" src="~/js/soundmanager2.js"></script>
-    <script type="text/javascript" src="~/js/slots.js"></script>
 
 }
