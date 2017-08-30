@@ -23,42 +23,13 @@
                 <h3 style="color:firebrick; font-family:verdana; text-align:center">Your results will be sent to our scoreboard</h3>
             </div>
         </div>
+        <button id="snap">Snap Photo</button>
     </div>
 
-
-    <div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-6">
-                <center><img src="~/Images/TheException-webcamPhoto.png" /></center>
-            </div>
-        </div>
-    </div>
-
-    <video id="video" width="640" height="480" autoplay></video>
-    <button id="snap">Snap Photo</button>
+    <h1 id="countdown"></h1>
+    <video id="video" class="hidden" width="640" height="480" autoplay style="display:none"></video>
     <canvas id="canvas" width="640" height="480"></canvas>
 
-    @*------------This section is left in because all the back-end wiring are connected to these two inputs, firstName and lastName-----------------------*@
-    <div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-6">
-                <form class="form-horizontal" id="scoreboardForm" style="text-align:center">
-                    <h1 style="color:moccasin; font-family:verdana; " text-align:center">Please include your name</h1>
-                    
-                    <br>
-                    <div class="form-group">
-                        <div class="col-sm-2 col-sm-offset-5"><input type="text" id="imageURL" name="imageURL" placeholder="Diego" class="form-control" /></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-2 col-sm-offset-5">
-                            <button type="button" class="btn-btn-primary" name="Start" id="submit">Start</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @*----------------------------------------------------------------------------------------------------------------------------------------------------*@
     <div class="clearBackground">
         <div class="row">
         <div class="col-sm-6">
@@ -83,19 +54,13 @@
 
 
 @section Scripts {
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.19.0.min.js"></script>
     <script type="text/javascript">
-
-        // Grab elements, create settings, etc.
-        var video = document.getElementById('video');
         // Elements for taking the snapshot
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
         var video = document.getElementById('video');
-
-        // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function () {
-            context.drawImage(video, 0, 0, 640, 480);
-        });
+        var randomNumber = Math.floor(Math.random() * 1000000000);;
 
         // Get access to the camera!
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -106,24 +71,59 @@
             });
         }
 
-        $(document).ready(function () {
-            console.log("All systems are clear, Launch Control")
-            $('#submit').on('click', scoreboardFormSubmit);
+        // Trigger photo take and send to AWS
+        document.getElementById("snap").addEventListener("click", function () {
+            $("#snap").hide();
+            $("#video").show();
+            $("#countdown").text("3");
+            setTimeout(function () {
+                $("#countdown").text("2")
+                setTimeout(function () {
+                    $("#countdown").text("1")
+                    setTimeout(function () {
+                        $("#countdown").text("")
+
+                        context.drawImage(video, 0, 0, 640, 480);
+                        $("#video").hide();
+
+                        var dataURL = canvas.toDataURL('image/jpeg', 1);
+                        var blob = dataURItoBlob(dataURL);
+                        var fd = new FormData(document.forms[0]);
+
+                        AWS.config.update({
+                            "accessKeyId": "AKIAI5WK3TQOYUVXJPJQ",
+                            "secretAccessKey": "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",
+                            "region": "us-east-2"
+                        });
+                        var s3 = new AWS.S3({ signatureVersion: 'v4' });
+                        var params = {
+                            Bucket: 'webcam-photos',
+                            Key: randomNumber.toString(),
+                            ContentType: 'image/jpeg',
+                            Body: blob,
+                            ACL: 'public-read'
+                        };
+                        s3.putObject(params, function (err, res) {
+                            if (err) {
+                                results.innerHTML = ("Error uploading data: ", err);
+                            } else {
+                                results.innerHTML = ("Successfully uploaded data");
+                            }
+                        });
+
+                        insert();
+                    }, 1000)
+                }, 1000)
+
+            }, 1000)
         });
 
-        var scoreboardFormSubmit = function () {
-            console.log("fired to scoreboard!")
-            var myData = "imageURL=" + $("#imageURL").val();
-            console.log(myData)
-            insert(myData);
-        }
-
-        var insert = function (data) {
+        var insert = function () {
             var url = "/api/scoreboard/";
             var settings = {
                 cache: false
                 , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-                , data: data
+                , data: "imageURL=https://s3.us-east-2.amazonaws.com/webcam-photos/" + randomNumber
                 , dataType: "json"
                 , success: function (response) {
                     console.log("post success");
@@ -139,6 +139,26 @@
             $(".clearBackground").remove();
 
             setTimeout(function () { window.location.href = "/home/newuser/" }, 10000)
+        }
+
+        var dataURItoBlob = function(dataURI) {
+            // convert base64/URLEncoded data component to raw binary data held in a string
+            var byteString;
+            if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                byteString = atob(dataURI.split(',')[1]);
+            else
+                byteString = unescape(dataURI.split(',')[1]);
+
+            // separate out the mime component
+            var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+            // write the bytes of the string to a typed array
+            var ia = new Uint8Array(byteString.length);
+            for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+
+            return new Blob([ia], { type: mimeString });
         }
     </script>
 }
