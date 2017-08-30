@@ -27,7 +27,7 @@
     </div>
 
     <h1 id="countdown"></h1>
-    <video id="video" class="hidden" width="640" height="480" autoplay style="display:none"></video>
+    <video id="video" width="640" height="480" autoplay style="display:none"></video>
     <canvas id="canvas" width="640" height="480"></canvas>
 
     <div class="clearBackground">
@@ -137,6 +137,7 @@
 
             //Code to tell user to go to next page
             $(".clearBackground").remove();
+            // Add code to display message for going to next screen
 
             setTimeout(function () { window.location.href = "/home/newuser/" }, 10000)
         }

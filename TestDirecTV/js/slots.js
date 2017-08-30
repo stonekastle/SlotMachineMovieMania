@@ -270,6 +270,8 @@ var slotMachine = {
         //Code that tells user to go to next page
         $("#PageContainer").remove();
 
+        // Add code to display message to user to go to next screen
+
         setTimeout(function () { window.location.href = "/home/slots/" }, 10000)
     },
 
