@@ -151,7 +151,13 @@
         console.log("result", result)
 
         finish();
-        setTimeout(function(){ window.location.href = "/home/questions/" }, 5000)
+        setTimeout(function () {
+            $("#questionContainer").html("<h1>Move on to the Scoreboard!!</h1>");
+            setTimeout(function () {
+
+                window.location.href = "/home/questions/"
+            }, 5000)
+        }, 3000)
     }
 
 
