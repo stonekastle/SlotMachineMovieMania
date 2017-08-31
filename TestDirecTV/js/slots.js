@@ -11,23 +11,23 @@ var slotMachine = {
 
 
 
-    //firstReelStopTime: 667,
-    firstReelStopTime: 5336,
-    //secondReelStopTime: 575, // since first reel's stop time, not since animation beginning
-    secondReelStopTime: 4600,
-    //thirdReelStopTime: 568, // since second reel's stop time, not since animation beginning
-    thirdReelStopTime: 4544,
-    //payoutStopTime: 700, // since last reel's stop time, not since animation beginning
-    payoutStopTime: 4000,
+    firstReelStopTime: 667,
+    //firstReelStopTime: 5336,
+    secondReelStopTime: 575, // since first reel's stop time, not since animation beginning
+    //secondReelStopTime: 4600,
+    thirdReelStopTime: 568, // since second reel's stop time, not since animation beginning
+    //thirdReelStopTime: 4544,
+    payoutStopTime: 700, // since last reel's stop time, not since animation beginning
+    //payoutStopTime: 4000,
 
 
     reelSpeedDifference: 0, // speed difference between the 3 reels
-    //reelSpeed1Delta: 100, // "Fast speed" 
-    reelSpeed1Delta: 25,
+    reelSpeed1Delta: 100, // "Fast speed" 
+    //reelSpeed1Delta: 25,
     reelSpeed1Time: 0, // How long does fast speed lasts.
     //reelSpeed1Time: 0,
-    //reelSpeed2Delta: 100, // Slow speed
-    reelSpeed2Delta: 10,
+    reelSpeed2Delta: 100, // Slow speed
+    //reelSpeed2Delta: 10,
 
     //positioningTime: 200,
     positioningTime: 200,
