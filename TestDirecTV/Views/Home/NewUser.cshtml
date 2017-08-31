@@ -23,7 +23,16 @@
                 <h3 style="color:firebrick; font-family:verdana; text-align:center">Your results will be sent to our scoreboard</h3>
             </div>
         </div>
-        <button id="snap">Snap Photo</button>
+    </div>
+    <div class="row" id="inputDiv">
+        <div class="col-sm-6 clearBackground">
+            <h3 style="color:firebrick; font-family:verdana; text-align:center">Please enter your name:</h3>
+            <div class="form-group">
+                <center><input type="text" class="form-control" id="userName" /></center>
+                <br />
+                <center><button id="submit" class="btn btn-default">Submit Name and Take Picture</button></center>
+            </div>
+        </div>
     </div>
 
     <h1 id="countdown"></h1>
@@ -72,8 +81,12 @@
         }
 
         // Trigger photo take and send to AWS
-        document.getElementById("snap").addEventListener("click", function () {
-            $("#snap").hide();
+        $(document).ready(function () {
+            $("#submit").on("click", createUser)
+        })
+
+        var createUser = function () {
+            $("#inputDiv").hide();
             $("#video").show();
             $("#countdown").text("3");
             setTimeout(function () {
@@ -105,41 +118,41 @@
                         };
                         s3.putObject(params, function (err, res) {
                             if (err) {
-                                results.innerHTML = ("Error uploading data: ", err);
+                                console.log("aws error", err)
                             } else {
-                                results.innerHTML = ("Successfully uploaded data");
+                                console.log("aws success")
+                                insert();
                             }
                         });
 
-                        insert();
                     }, 1000)
                 }, 1000)
 
             }, 1000)
-        });
+        }
 
         var insert = function () {
             var url = "/api/scoreboard/";
             var settings = {
                 cache: false
                 , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-                , data: "imageURL=https://s3.us-east-2.amazonaws.com/webcam-photos/" + randomNumber
+                , data: "imageURL=https://s3.us-east-2.amazonaws.com/webcam-photos/" + randomNumber + "&name=" + $("#userName").val()
                 , dataType: "json"
                 , success: function (response) {
                     console.log("post success");
+                    setTimeout(function () { window.location.href = "/home/slots/" + response.Item + "/" + randomNumber }, 5000)
                 }
                 , error: function (response) {
-                    console.log("post error");
+                    console.log("post error", response);
                 }
                 , type: "POST"
             }
             $.ajax(url, settings);
 
-            //Code to tell user to go to next page
-            $(".clearBackground").remove();
             // Add code to display message for going to next screen
+            // currently just removes some elements for a visual effect, needs polishing
+            $(".clearBackground").remove();
 
-            setTimeout(function () { window.location.href = "/home/newuser/" }, 10000)
         }
 
         var dataURItoBlob = function(dataURI) {

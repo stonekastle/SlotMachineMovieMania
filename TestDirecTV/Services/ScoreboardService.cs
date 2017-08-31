@@ -21,6 +21,7 @@ namespace TestDirecTV.Services
                 , inputParamMapper: delegate (SqlParameterCollection paramCollection)
                     {
                         paramCollection.AddWithValue("@imageUrl", model.ImageURL);
+                        paramCollection.AddWithValue("@name", model.Name);
                         paramCollection.AddOutputParameter("@id", System.Data.SqlDbType.Int);
                     }
                 , returnParameters: delegate (SqlParameterCollection param)
@@ -128,6 +129,7 @@ namespace TestDirecTV.Services
             scoreboard.ImageURL = reader.GetSafeString(startingIndex++);
             scoreboard.Score = reader.GetSafeInt32(startingIndex++);
             scoreboard.QuestionSet = reader.GetSafeInt32(startingIndex++);
+            scoreboard.Name = reader.GetSafeString(startingIndex++);
 
             return scoreboard;
         }

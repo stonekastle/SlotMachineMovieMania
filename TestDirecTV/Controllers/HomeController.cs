@@ -18,11 +18,14 @@ namespace TestDirecTV.Controllers
             return View();
         }
 
-        [Route("slots")]
-        public ActionResult Slots()
+        [Route("slots/{userId:int}/{imageNumber:long}")]
+        public ActionResult Slots(int userId, long imageNumber)
         {
             ViewBag.Title = "Slots";
-            return View();
+            SlotsViewModel model = new SlotsViewModel();
+            model.UserId = userId;
+            model.ImageNumber = imageNumber;
+            return View(model);
         }
 
         [Route("questions")]

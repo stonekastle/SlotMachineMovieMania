@@ -127,6 +127,7 @@ var slotMachine = {
     //----------------------------------------------------
 
     spin: function () {
+        $('#spinButton').addClass("disabledbutton");
         // Validate that we can spin
         //if ($('#spinButton').hasClass("disabled")) { return false; }
         //if (slotMachine.spinning) { return false; }
@@ -255,10 +256,11 @@ var slotMachine = {
         var settings = {
             cache: false
             , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-            , data: "id=" + user.Id + "&questionset=" + questionSet
+            , data: "id=" + userId + "&questionset=" + questionSet
             , dataType: "json"
             , success: function (response) {
                 console.log("questionset success")
+                setTimeout(function () { window.location.href = "/home/newuser/" }, 5000)
             }
             , error: function (response) {
                 console.log("questionset error")
@@ -267,12 +269,9 @@ var slotMachine = {
         };
         $.ajax(url, settings);
 
-        //Code that tells user to go to next page
+        // Add code to display message for going to next screen
+        // currently just removes some elements for a visual effect, needs polishing
         $("#PageContainer").remove();
-
-        // Add code to display message to user to go to next screen
-
-        setTimeout(function () { window.location.href = "/home/slots/" }, 10000)
     },
 
     _increment_payout_counter: function (data) {

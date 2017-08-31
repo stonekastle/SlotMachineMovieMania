@@ -10,6 +10,7 @@ namespace TestDirecTV.Models.Requests
     {
         [Required]
         public string ImageURL { get; set; }
-        public int Score { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 }

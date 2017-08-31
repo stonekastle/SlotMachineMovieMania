@@ -18,9 +18,8 @@
 
 <script type="text/template" id="template">
     <div class="container content">
-        <img class="col-sm-4 image" />
-        <div class="col-sm-4 score" style="color:brown; font-size:200%; text-align:left;">
-        </div>
+        <h1 class="col-sm-4 userText" style="color:brown; font-size:200%; text-align:right;"></h1>
+        <img class="col-sm-4 userImage" style="width: 30%; height: auto;"/>
     </div>
 </script>
 
@@ -46,8 +45,8 @@
     var onGetAllSuccess = function (data) {
         for (var i = 0; i < data.Items.length; i++) {
             var $temp = $($("#template").html());
-            $temp.find(".image").prop("src", data.Items[i].ImageURL);
-            $temp.find(".score").text(data.Items[i].Score);
+            $temp.find(".userImage").prop("src", data.Items[i].ImageURL);
+            $temp.find(".userText").text(data.Items[i].Name + " " + data.Items[i].Score);
 
             $("#scoreboard").append($temp);
         }

@@ -17,7 +17,7 @@
 <div class="container-fluid">
     <div id="PageContainer" style="background-size:cover;">
         <div id="PageContainerInner">
-            <img id="userImage" src="" />
+            <img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />
             <!-- Just to be able to set the "won!" extra background -->
 
             <div id="slotMachineContainer">
@@ -29,7 +29,7 @@
                     <div id="reelOverlay"></div>
                 </div>
 
-                <div id="spinButton" class="disabledbutton"></div>
+                <div id="spinButton"></div>
                 <br />
                 <br />
                 <br />
@@ -71,39 +71,11 @@
     <script type="text/javascript" src="~/js/soundmanager2.js"></script>
     <script type="text/javascript" src="~/js/slots.js"></script>
     <script type="text/javascript">
-        var user = {};
+        var userId = @Model.UserId;
         var machineName = '';
 
         var numIconsPerReel = '';
         var windowID = '';
-        $(document).ready(function () {
-            getLastUser();
-        })
-
-        var getLastUser = function () {
-            var url = "/api/scoreboard/lastcreated";
-            var settings = {
-                cache: false
-                , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-                , dataType: "json"
-                , success: function (response) {
-                    console.log("get success");
-                    if (response.Item) {
-                        user = response.Item;
-                        $("#spinButton").removeClass("disabledbutton");
-                        $("#userImage").prop("src", user.ImageURL);
-                    }
-                    else {
-                        setTimeout(function () { getLastUser() }, 1000)
-                    }
-                }
-                , error: function (response) {
-                    console.log("get error");
-                }
-                , type: "GET"
-            };
-            $.ajax(url, settings);
-        }
     </script>
 
 }

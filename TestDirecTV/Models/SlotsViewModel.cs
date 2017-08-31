@@ -9,5 +9,6 @@ namespace TestDirecTV.Models
     {
         public int UserId { get; set; }
         public int QuestionSet { get; set; }
+        public long ImageNumber { get; set; }
     }
 }
