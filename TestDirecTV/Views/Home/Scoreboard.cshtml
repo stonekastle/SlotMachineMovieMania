@@ -3,14 +3,28 @@
     ViewBag.Title = "Scoreboard";
 }
 
-<div class="container-fluid familyMan">
+<style>
+    body {
+        background-image: url("/Images/FamilyMan.png");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+    }
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+</style>
+
+<div>
     <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
     <div class="row">
-        
-        
+
+
         <div class="col-sm-12">
+            <h1 style="color:aliceblue; font-family:verdana; font-size:300%; text-align:center;">Scoreboard</h1>
             <div class="Scoreboard" id="scoreboard">
-                <h1 style="color:dodgerblue; font-family:verdana; font-size:300%; text-align:center;">Scoreboard</h1>
             </div>
         </div>
     </div>
@@ -18,8 +32,8 @@
 
 <script type="text/template" id="template">
     <div class="container content">
-        <h1 class="col-sm-4 userText" style="color:brown; font-size:200%; text-align:right;"></h1>
-        <img class="col-sm-4 userImage" style="width: 30%; height: auto;"/>
+        <h1 class="col-sm-offset-4 col-sm-4 userText" style="color:aliceblue; font-size:200%; text-align:right;"></h1>
+        <img class="col-sm-4 userImage" style="width: 30%; height: auto;" />
     </div>
 </script>
 

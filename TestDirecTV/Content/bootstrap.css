@@ -6,8 +6,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 
-.theException{
-    background:url("/Images/TheException.png") no-repeat center center fixed;
+.theException {
+    background: url("/Images/TheException.png") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -56,9 +56,12 @@ html {
 
 body {
     margin: 0;
-    background:transparent;
+    background: transparent;
     background-color: black;
 }
+
+
+
 
 article,
 aside,
