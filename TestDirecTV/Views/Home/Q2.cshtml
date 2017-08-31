@@ -142,8 +142,13 @@
 
     var doThings = function() {
         var result = $(this).hasClass("correct")
-        if (result == true){
+        $("#questionContainer").empty()
+        if (result == true) {
             put();
+            $("#questionContainer").html("<h1>You're Right!!</h1>");
+        }
+        else {
+            $("#questionContainer").html("<h1>Sorry...</h1>");
         }
 
         console.log("result", result)

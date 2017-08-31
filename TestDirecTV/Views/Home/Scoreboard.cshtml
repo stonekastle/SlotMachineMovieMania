@@ -28,13 +28,13 @@
         getAll(onGetAllSuccess, onGetAllError)
     });
 
-    var getAll = function (onGetAllSuccess, onGetAllError) {
+    var getAll = function (successCallback, errorCallback) {
         var url = "/api/scoreboard";
         var settings = {
             cache: false
             , dataType: "json"
-            , success: onGetAllSuccess
-            , error: onGetAllError
+            , success: successCallback
+            , error: errorCallback
             , type: "GET"
         }
 
@@ -43,6 +43,8 @@
     }
 
     var onGetAllSuccess = function (data) {
+        $("#scoreboard").empty();
+        console.log("get success");
         for (var i = 0; i < data.Items.length; i++) {
             var $temp = $($("#template").html());
             $temp.find(".userImage").prop("src", data.Items[i].ImageURL);
@@ -50,10 +52,13 @@
 
             $("#scoreboard").append($temp);
         }
+        setTimeout(function () {
+            getAll(onGetAllSuccess, onGetAllError)
+        }, 1000)
     }
 
     var onGetAllError = function (data) {
-        console.log(data);
+        console.log("get error", data);
     }
 </script>
 
