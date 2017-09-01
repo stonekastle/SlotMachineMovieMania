@@ -4,7 +4,7 @@
     body {
         background-image: url("/Images/TheException.png");
         background-repeat: no-repeat;
-        background-position: center top;
+        background-position: center;
         background-size: cover;
     }
 
@@ -40,26 +40,32 @@
     </div>
     <div class="row" id="inputDiv">
         <div class="col-sm-6 clearBackground">
-            <h3 style="color:firebrick; font-family:verdana; text-align:center">Please enter your name:</h3>
+            <h3 style="color:black; font-family:verdana; text-align:center">Please enter your name:</h3>
             <div class="form-group">
                 <center><input type="text" class="form-control" id="userName" /></center>
                 <br />
-                <center><button id="submit" class="btn btn-default">Submit Name and Take Picture</button></center>
+                <center><h3 style="color:firebrick"><strong>Press the globe</strong></h3></center>
+
+                <center><input type="image" img src="~/Images/ATT Dan Created.gif" id="submit" class="btn-btn-primary" /></center>               
             </div>
         </div>
     </div>
 
-    <h1 id="countdown"></h1>
-    <video id="video" width="640" height="480" autoplay style="display:none"></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <div class="row">
+        <div class="col-sm-6" id="lookGreat">
 
-    <div class="clearBackground">
-        <div class="row">
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-sm-6">
-            <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
-            </div>
+            <center><h1 id="coundown"></h1></center>
+            <center><video id="video" width="640" height="480" autoplay style="display:none"></video></center>
+            <center><canvas id="canvas" width="640" height="480"></canvas></center>
         </div>
     </div>
+
+
     <br />
     <br />
     <br />
@@ -163,11 +169,12 @@
 
             // Add code to display message for going to next screen
             // currently just removes some elements for a visual effect, needs polishing
+            
             $(".clearBackground").remove();
-
+            $("#lookGreat").html("<br /><br /><br /><center><h1><strong>Wow, you've got a nice look!</strong></h1></center><br /><center><h1>Now get ready for game time</h1></center>")
         }
 
-        var dataURItoBlob = function(dataURI) {
+        var dataURItoBlob = function (dataURI) {
             // convert base64/URLEncoded data component to raw binary data held in a string
             var byteString;
             if (dataURI.split(',')[0].indexOf('base64') >= 0)

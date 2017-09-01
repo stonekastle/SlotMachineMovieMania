@@ -5,25 +5,32 @@
 
 <style>
     body {
-        background-image: url("/Images/FamilyMan.png");
+        /*background-image: url("/Images/FamilyMan.png");*/
+        background-image:url("/Images/template2/main_bg.png");
         background-repeat: no-repeat;
-        background-position: center top;
+        background-position: center; /*deleted "center top" so that the background is now centered in the middle of the image and screen rather than from very top of the image*/
         background-size: cover;
     }
 
     html, body {
         max-width: 100%;
+        max-height: 500%;
         overflow-x: hidden;
+    }
+
+
+    #headerStretch {
+        max-height: 2000px;
+        max-width: 750px;
     }
 </style>
 
+<center><img id="headerStretch" src="~/Images/8-30-leaderboard-v2-2000-750.png" /></center>
+
 <div>
-    <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
+    @*<center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>*@
     <div class="row">
-
-
-        <div class="col-sm-12">
-            <h1 style="color:aliceblue; font-family:verdana; font-size:300%; text-align:center;">Scoreboard</h1>
+        <div class="col-sm-12">            
             <div class="Scoreboard" id="scoreboard">
             </div>
         </div>
@@ -32,8 +39,9 @@
 
 <script type="text/template" id="template">
     <div class="container content">
-        <h1 class="col-sm-offset-4 col-sm-4 userText" style="color:aliceblue; font-size:200%; text-align:right;"></h1>
-        <img class="col-sm-4 userImage" style="width: 30%; height: auto;" />
+        @*<h1 class="col-sm-offset-4 col-sm-4 userText" style="color:black; font-size:200%; text-align:right;"></h1>*@
+        <h1 class="col-sm-6 userText" style="color:black; font-size:200%; text-align:right;"></h1>
+        <img class="col-sm-6 userImage" style="width: 30%; height: auto;" />
     </div>
 </script>
 

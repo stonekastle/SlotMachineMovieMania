@@ -15,7 +15,7 @@
 
 
 <div class="container-fluid">
-    <div class="col-sm-6 clearBackground">
+    <div class="col-sm-5 clearBackground">
         <br />
         <br />
         <br />
@@ -28,7 +28,7 @@
         
         <center><img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" /></center>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <div id="PageContainer" style="background-size:cover; right: 100px;">
             <div id="PageContainerInner">
                 @*<img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />*@
@@ -78,6 +78,7 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-2"></div>
 </div>
 
 @section Scripts {
@@ -91,17 +92,6 @@
 
         var numIconsPerReel = '';
         var windowID = '';
-
-        $(document).ready(function (){
-            if($("#spinButton").hasClass("disabled")){
-                console.log("Look at 'em spining")
-                $("#userImage").html("<h1> Thanks, good lookin'!  Please visit the next screen.</h1>");
-            }else{
-                console.log("press the globe to spin")
-            }     
-        })
-
-       
 
 
     </script>

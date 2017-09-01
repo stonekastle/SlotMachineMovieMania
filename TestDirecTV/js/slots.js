@@ -3,7 +3,7 @@ var slotMachine = {
     // Set the proper height for the reels in the CSS file, rule: #slotMachineContainer #ReelContainer .reel
     // Set it to 3 * stripHeight
     // Also set the top property to the initial position you want to show
-    stripHeight:720, // Update this to match the strip PNG
+    stripHeight: 720, // Update this to match the strip PNG
     //stripHeight: 5760,
     //alignmentOffset: 100, // Play around with this until reels are properly aligned post-spin
     alignmentOffset: 1,
@@ -61,15 +61,15 @@ var slotMachine = {
 
         //$('#soundOffButton').click(function() { slotMachine.toggle_sound(); });
 
-        if (slotMachine.soundEnabled)  {
-        	soundManager.setup({
-        		url: "/js/",
-        		onready: function() {
-        			slotMachine.sounds['payout'] = soundManager.createSound({id: "payout", url: '/sounds/payout.mp3'});
-        			slotMachine.sounds['fastpayout'] = soundManager.createSound({id: "fastpayout", url: '/sounds/fastpayout.mp3'});
-        			slotMachine.sounds['spinning'] = soundManager.createSound({id: "spinning", url: '/sounds/spinning.mp3'});
-        		}
-        	});
+        if (slotMachine.soundEnabled) {
+            soundManager.setup({
+                url: "/js/",
+                onready: function () {
+                    slotMachine.sounds['payout'] = soundManager.createSound({ id: "payout", url: '/sounds/payout.mp3' });
+                    slotMachine.sounds['fastpayout'] = soundManager.createSound({ id: "fastpayout", url: '/sounds/fastpayout.mp3' });
+                    slotMachine.sounds['spinning'] = soundManager.createSound({ id: "spinning", url: '/sounds/spinning.mp3' });
+                }
+            });
         }
 
         //if (slotMachine.get_balance() < minBet) {
@@ -175,6 +175,8 @@ var slotMachine = {
         var getResults = function () {
             questionSet = Math.floor(Math.random() * 4) + 1;
             return { success: true, reels: [questionSet, questionSet, questionSet], prize: 1, credits: 10, dayWinnings: 10, lifetimeWinnings: 500 }
+
+           
         }
 
         spinData = getResults();
@@ -271,7 +273,26 @@ var slotMachine = {
 
         // Add code to display message for going to next screen
         // currently just removes some elements for a visual effect, needs polishing
-        $("#PageContainer").remove();
+
+
+        //var doStuff = $("#spinButton").hasClass("disabledbutton") //this command is checking to see if #spinButton has class of "disabledbutton")
+        //if (doStuff == true) {
+        //    console.log("Look at 'em spining")
+        //    $("#userImage").html("<h1> Thanks, good lookin'!  Please visit the next screen.</h1>");
+        //} else {
+        //    console.log("press the globe to spin")
+        //}
+
+
+        $("#userImage").remove(); // this removes the user image since it's already been sitting in view since page load
+
+        $(".clearBackground").html("<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><h1><strong> Thanks, good lookin'!</strong> <br />  Please visit the next screen.</h1><center>");
+
+        $("#PageContainer").remove(); //this removes the slot machine after it's been played
+
+       
+
+
     },
 
     _increment_payout_counter: function (data) {

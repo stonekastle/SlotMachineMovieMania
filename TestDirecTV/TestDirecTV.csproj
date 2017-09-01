@@ -251,6 +251,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\8-30 leaderboard v2.png" />
+    <Content Include="Images\8-30-leaderboard-v2-2000-750.png" />
     <Content Include="Images\ATT Dan Created.gif" />
     <Content Include="Images\Blackcoat%27s daughter.png" />
     <Content Include="Images\Enemy.png" />
