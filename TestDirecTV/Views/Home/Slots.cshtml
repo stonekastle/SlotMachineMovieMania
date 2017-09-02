@@ -10,40 +10,88 @@
         pointer-events: none;
         opacity: 0.4;
     }
+
+    body {
+        /*background-image: url("/Images/FamilyMan.png");*/
+        background-image:url("/Images/template2/main_bg.png");
+        background-repeat: no-repeat;
+        background-position: center; /*deleted "center top" so that the background is now centered in the middle of the image and screen rather than from very top of the image*/
+        background-size: cover;
+    }
+
+    html, body {
+        max-width: 100%;
+        max-height: 500%;
+        overflow-x: hidden;
+    }
+
+
+    #headerStretch {
+        max-height: 2000px;
+        max-width: 750px;
+    }
+
 </style>
 
 
 
 <div class="container-fluid">
-    <div class="col-sm-5 clearBackground">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        
-        <center><img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" /></center>
-    </div>
-    <div class="col-sm-5">
-        <div id="PageContainer" style="background-size:cover; right: 100px;">
-            <div id="PageContainerInner">
-                @*<img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />*@
-                <!-- Just to be able to set the "won!" extra background -->
+    
+        <div class="col-sm-12 clearBackground">
+            <br />
+            <br />
+            <br />
+            <h1 style="color:cornflowerblue; font-family:verdana; font-size:400%; text-align:center;" id="playerName"></h1>
+            @*<center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>*@
+        </div>
 
-                <div id="slotMachineContainer">
+    
+    
+        <div class="col-sm-5">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
-                    <div id="ReelContainer">
-                        <div id="reel1" class="reel"></div>
-                        <div id="reel2" class="reel"></div>
-                        <div id="reel3" class="reel"></div>
-                        <div id="reelOverlay"></div>
+            <center><img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" /></center>
+        </div>
+        <div class="col-sm-5">
+            <div id="PageContainer" style="background-size:cover; right: 100px;">
+                <div id="PageContainerInner">
+                    @*<img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />*@
+                    <!-- Just to be able to set the "won!" extra background -->
+
+                    <div id="slotMachineContainer">
+
+                        <div id="ReelContainer">
+                            <div id="reel1" class="reel"></div>
+                            <div id="reel2" class="reel"></div>
+                            <div id="reel3" class="reel"></div>
+                            <div id="reelOverlay"></div>
+                        </div>
+
+                        <div id="spinButton"></div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                     </div>
 
-                    <div id="spinButton"></div>
+                    @*<div id="soundOffButton"></div>*@
                     <br />
                     <br />
                     <br />
@@ -57,28 +105,13 @@
                     <br />
                     <br />
                     <br />
+
+
                 </div>
-
-                @*<div id="soundOffButton"></div>*@
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-
-
             </div>
         </div>
-    </div>
-    <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+    
 </div>
 
 @section Scripts {
@@ -93,6 +126,9 @@
         var numIconsPerReel = '';
         var windowID = '';
 
+        //$("#playerName").html("Go ahead, " + $("#userName").val() + ". Tap the globe.");
+
+        $("#playerName").html("Go ahead, tap the globe");
 
     </script>
 

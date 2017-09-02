@@ -34,6 +34,7 @@ body {
 
 #slotMachineContainer #ReelContainer { top: 14px; }
 
+
 #slotMachineContainer #ReelContainer #reelOverlay {
 	background: transparent url(../images/template2/reel_overlay.png) 0 center no-repeat;
 }
