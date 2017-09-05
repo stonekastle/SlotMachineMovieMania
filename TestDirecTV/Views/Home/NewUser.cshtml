@@ -2,9 +2,9 @@
 
 <style>
     body {
-        background-image: url("/Images/TheException.png");
+        background-image: url("/Images/9-1 WELCOME SCREEN BACKGROUND.png");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center top;
         background-size: cover;
     }
 
@@ -13,65 +13,59 @@
         overflow-x: hidden;
     }
 
-     #headerStretch {
+    #headerStretch {
         max-height: 2000px;
         max-width: 750px;
     }
 
+    
 
 </style>
 
 <div>
-    <div class="row">
-        <div class="clearBackground">
-            <div class="col-sm-4">
-                <center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>
-                @*<h1 style="color:beige; font-family:verdana; font-size:500%; text-align:right;">Film Challenge</h1>*@
-            </div>
-        </div>
+
+
+    <div class="col-sm-12">
+        <br /><br />
+        <center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>
+        @*<h1 style="color:beige; font-family:verdana; font-size:500%; text-align:right;">Film Challenge</h1>*@
     </div>
 
-    <div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-6">
-                <h1 style="color:moccasin; font-family:verdana; text-align:right">Get ready to smile for the camera</h1>
-            </div>
-        </div>
+    
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-4 offset-col-sm-1" id="lookGreat" style="border-radius:5%; margin:0px; padding:0px; border-style:solid; border-color:#00a6d6">
+    @*<div class="col-sm-4" id="lookGreat" style="border-radius: 5%; box-shadow: 8px 8px 60px #00a6d6">*@
+        <center><h1 id="coundown"></h1></center>
+        <center><video id="video" width="628" height="480" autoplay style="border-radius:5%; display:none"></video></center>
+        @*<center><canvas id="canvas" width="640" height="480"></canvas></center>*@
+        <canvas style="border-radius:5%;" id="canvas" width="628" height="480"></canvas>
     </div>
 
-    <div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3 style="color:firebrick; font-family:verdana; text-align:center">Your results will be sent to our scoreboard</h3>
-            </div>
-        </div>
-    </div>
-    <div class="row" id="inputDiv">
-        <div class="col-sm-6 clearBackground">
-            <h3 style="color:black; font-family:verdana; text-align:center">Please enter your name:</h3>
-            <div class="form-group">
-                <center><input type="text" class="form-control" id="userName" /></center>
+    
+
+    @*<div class="col-sm-4" id="userPhoto">
+        <center><canvas style="border-radius: 5%; box-shadow: 8px 8px 60px grey" id="canvas" width="640" height="480"></canvas></center>
+    </div>*@
+
+    <div class="col-sm-4 clearBackground" id="inputDiv">
+        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center">Smile for the camera</h1>
+            <br /></>
+        <h3 style="color:#00a6d6; font-family:'ATT Aleck Sans'; text-align:center">Please enter your name:</h3>
+
+        <div class="form-group">
+            <center><input type="text" class="form-control" id="userName" /></center>
                 <br />
-                <center><h3 style="color:firebrick"><strong>Press the globe</strong></h3></center>
+            <h3 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center"><strong>Tap the globe</strong></h3>
 
-                <center><input type="image" img src="~/Images/ATT Dan Created.gif" id="submit" class="btn-btn-primary" /></center>               
-            </div>
+            <center><input type="image" img src="~/Images/ATT Dan Created.gif" id="submit" class="btn-btn-primary" /></center>
         </div>
-    </div>
+    </div>@*Please enter your name*@
 
-    <div class="row">
-        <div class="col-sm-6" id="lookGreat">
 
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <center><h1 id="coundown"></h1></center>
-            <center><video id="video" width="640" height="480" autoplay style="display:none"></video></center>
-            <center><canvas id="canvas" width="640" height="480"></canvas></center>
-        </div>
-    </div>
+
+
 
 
     <br />
@@ -114,8 +108,9 @@
         })
 
         var createUser = function () {
-            $("#inputDiv").hide();
+            $("#inputDiv").show();
             $("#video").show();
+            $("#lookGreat").show();
             $("#countdown").text("3");
             setTimeout(function () {
                 $("#countdown").text("2")
@@ -177,7 +172,7 @@
 
             // Add code to display message for going to next screen
             // currently just removes some elements for a visual effect, needs polishing
-            
+
             $(".clearBackground").remove();
             $("#lookGreat").html("<br /><br /><br /><center><h1><strong>Wow, you've got a nice look!</strong></h1></center><br /><center><h1>Now get ready for game time</h1></center>")
         }

@@ -13,10 +13,11 @@
 
     body {
         /*background-image: url("/Images/FamilyMan.png");*/
-        background-image:url("/Images/template2/main_bg.png");
+        background-image:url("/Images/template2/main_bg.gif");
         background-repeat: no-repeat;
-        background-position: center; /*deleted "center top" so that the background is now centered in the middle of the image and screen rather than from very top of the image*/
+        background-position: center top; /*deleted "center top" so that the background is now centered in the middle of the image and screen rather than from very top of the image*/
         background-size: cover;
+        
     }
 
     html, body {
@@ -31,23 +32,28 @@
         max-width: 750px;
     }
 
+     #userImage{
+        border-radius: 5%;
+        box-shadow: 8px 8px 60px black /*#00a6d6*/;
+
+    }
+
 </style>
 
 
 
 <div class="container-fluid">
     
-        <div class="col-sm-12 clearBackground">
+        @*<div class="col-sm-12 clearBackground">
             <br />
             <br />
             <br />
-            <h1 style="color:cornflowerblue; font-family:verdana; font-size:400%; text-align:center;" id="playerName"></h1>
-            @*<center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>*@
-        </div>
+            <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
+        </div>*@
 
     
     
-        <div class="col-sm-5">
+        <div class="col-sm-4 col-sm-offset-1">
             <br />
             <br />
             <br />
@@ -111,6 +117,14 @@
             </div>
         </div>
         <div class="col-sm-2"></div>
+
+    <div class="col-sm-12 clearBackground">
+        <br />
+        <br />
+        <br />
+        <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
+        @*<center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>*@
+    </div>
     
 </div>
 
@@ -128,7 +142,7 @@
 
         //$("#playerName").html("Go ahead, " + $("#userName").val() + ". Tap the globe.");
 
-        $("#playerName").html("Go ahead, tap the globe");
+        //$("#playerName").html("Go ahead, tap the globe");
 
     </script>
 

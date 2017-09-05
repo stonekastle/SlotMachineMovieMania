@@ -9,17 +9,32 @@
     }
 
     body {
-        background-image: url("/Images/Enemy.png");
+        background-image: url("/Images/9-1 WELCOME SCREEN BACKGROUND.png");
         background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        background-position: center top;
+        background-size: contain;
     }
 
     html, body {
         max-width: 100%;
         overflow-x: hidden;
     }  
+
+    #userImageSmall{
+        max-width: 320px;
+        max-height:240px;
+    }
+
+    #headerStretch {
+        max-height: 2000px;
+        max-width: 750px;
+    }
     
+    img{
+        border-radius: 5%;
+        box-shadow: 8px 8px 15px grey /*#00a6d6*/;
+
+    }
     
 
     
@@ -28,26 +43,47 @@
 
 
 <div>
-    <div class="clearBackground">
-        <div class="row">
-            
-            <div class="col-sm-10">
-                <h1 style="color:beige; font-family:verdana; font-size:500%; text-align:right;">Questions</h1>
+    <div class="col-sm-12">
+        <br /><br />
+        <center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>       
+    </div>
+
+    <div class="col-sm-2"></div>
+    
+
+    <div class="col-sm-4" >
+        <center><img id="userImage" src="" /></center>
+    </div>
+
+    <div class="col-sm-4">
+        <h1 style="color:#00a6d6; font-family:'ATT Aleck Sans'; font-size:500%; text-align:center;">Questions</h1>
+        <br />
+        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center"><strong>That slot machine just shuffled and sent us your quiz</strong></h1>
+        <br />
+        <h3 style="color:#00a6d6; font-family:'ATT Aleck Sans'; text-align:center"><strong>Press the globe to get started</strong></h3>
+
+        <div class="form-group">
+                <center><input type="image" img src="~/Images/ATT Dan Created.gif" class="btn-btn-primary disabledbutton" name="Start" id="submit" /></center>
             </div>
         </div>
     </div>
+
+
+   
+          
+      
 
     <div class="clearBackground">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <h1 style="color:black; font-family:verdana; text-align:left"><strong>That slot machine just shuffled and sent us your quiz</strong></h1>
+             
             </div>
         </div>
     </div>
 
-    <div class="clearBackground">
+    @*<div class="clearBackground">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4"></div>
@@ -55,26 +91,26 @@
                 <h3 style="color:gold; font-family:verdana; text-align:left"><strong>Press the globe to get started</strong></h3>
             </div>
         </div>
-    </div>
+    </div>*@
 
 
-    <div class="clearBackground">
+    @*<div class="clearBackground">
         <div class="row">
-            <div class="col-sm-6"></div>
+           
             <div class="col-sm-1"></div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 id="userImageSmall">
                 <center><img id="userImage" src="" /></center>
             </div>
             <div class="col-sm-1"></div>
         </div>
-    </div>
+    </div>*@
 
-    <div class="form-group">
+    @*<div class="form-group">
         <div class="col-sm-6"></div>
         <div class="col-sm-6">
             <center><input type="image" img src="~/Images/ATT Dan Created.gif" class="btn-btn-primary disabledbutton" name="Start" id="submit"/></center>
         </div>
-    </div>
+    </div>*@
 
     @*<div class="clearBackground">
         <div class="row">

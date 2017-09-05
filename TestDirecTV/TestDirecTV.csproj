@@ -254,6 +254,7 @@
     <Content Include="Images\8-30 flicktionary logo v5 %281%29.png" />
     <Content Include="Images\8-30 leaderboard v2.png" />
     <Content Include="Images\8-30-leaderboard-v2-2000-750.png" />
+    <Content Include="Images\9-1 WELCOME SCREEN BACKGROUND.png" />
     <Content Include="Images\ATT Dan Created.gif" />
     <Content Include="Images\Blackcoat%27s daughter.png" />
     <Content Include="Images\Enemy.png" />
@@ -263,6 +264,9 @@
     <Content Include="Images\IntoTheForest.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\machine.png" />
+    <Content Include="Images\Qs background screen 2 total png.png" />
+    <Content Include="Images\spin to win slot machine.png" />
+    <Content Include="Images\spin-to-win-slot-machine-junior.png" />
     <Content Include="Images\template1\main_bg.jpg" />
     <Content Include="Images\template1\main_bg.png" />
     <Content Include="Images\template1\main_bg_machine.png" />
@@ -273,6 +277,7 @@
     <Content Include="Images\template1\spin_button.png" />
     <Content Include="Images\template1\sprites.png" />
     <Content Include="Images\template1\won_bg.png" />
+    <Content Include="Images\template2\main_bg.gif" />
     <Content Include="Images\template2\main_bg.png" />
     <Content Include="Images\template2\main_bg_machine.png" />
     <Content Include="Images\template2\prizes_sprites.png" />
