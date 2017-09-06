@@ -173,7 +173,7 @@ var slotMachine = {
         window.setTimeout(function () { FirstReelTimeoutHit = true; if (spinData != null) { fnStopReelsAndEndSpin(); } }, slotMachine.firstReelStopTime);
 
         var getResults = function () {
-            questionSet = Math.floor(Math.random() * 4) + 1;
+            questionSet = Math.floor(Math.random() * 3) + 1;
             return { success: true, reels: [questionSet, questionSet, questionSet], prize: 1, credits: 10, dayWinnings: 10, lifetimeWinnings: 500 }
 
            
