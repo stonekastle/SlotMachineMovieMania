@@ -40,8 +40,8 @@ body {
 }
 
 #slotMachineContainer #ReelContainer .reel {
-	height: 3240px; /* set the height to 3 * the strip PNG height */
-    /*height: 25920px; /* this number is our reel hieght (5760) multiplied by 4.5 (because his default 3240 is 4.5 times his reel height of 720, not 3 times the reel height like he told us to do which did not work)*/
+	/*height: 3240px; /*THIS IS THE ORIGINAL CODE DO NOT DELETE set the height to 3 * the strip PNG height */
+    height: 25920px; /* this number is our reel hieght (5760) multiplied by 4.5 (because his default 3240 is 4.5 times his reel height of 720, not 3 times the reel height like he told us to do which did not work)*/
     /*height: 10000px;*/
 	background: transparent url(../images/template2/reel_strip.png) 0 0 repeat-y;
 }

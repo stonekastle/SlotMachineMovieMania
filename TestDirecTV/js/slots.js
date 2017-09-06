@@ -3,10 +3,10 @@ var slotMachine = {
     // Set the proper height for the reels in the CSS file, rule: #slotMachineContainer #ReelContainer .reel
     // Set it to 3 * stripHeight
     // Also set the top property to the initial position you want to show
-    stripHeight: 720, // Update this to match the strip PNG
-    //stripHeight: 5760,
+    //stripHeight: 720, // Update this to match the strip PNG
+    stripHeight: 5760,
     //alignmentOffset: 100, // Play around with this until reels are properly aligned post-spin
-    alignmentOffset: 1,
+    alignmentOffset: 100,
 
 
 
@@ -380,10 +380,10 @@ var slotMachine = {
         if (outcome != null) {
             // the whole strip repeats thrice, so we don't have to care about looping   
             // alignmentOffset is kind of empirical...
-            //var numIconsPerReel = slotMachine.stripHeight / 48;  //this is Chris' comment trying to establish numIconsPerReel
-            var distanceBetweenIcons = slotMachine.stripHeight / window.numIconsPerReel;
-            //var distanceBetweenIcons = numIconsPerReel; // this is also Chris' comment which proved fruitless
-            var finalPosition = -slotMachine.stripHeight - ((outcome - 1) * distanceBetweenIcons) + slotMachine.alignmentOffset;
+            var numIconsPerReel = slotMachine.stripHeight / 48;  //2A this is Chris' comment trying to establish numIconsPerReel
+            //var distanceBetweenIcons = slotMachine.stripHeight / window.numIconsPerReel; //1A. this is the original code ***DO NOT DELETE THIS LINE****
+            var distanceBetweenIcons = numIconsPerReel; //2B this is also Chris' comment which proved fruitless
+            var finalPosition = -slotMachine.stripHeight - ((outcome - 1) * distanceBetweenIcons) + slotMachine.alignmentOffset; //1B this is the orinal code
 
 
             // Animation two: Elastic Easing
