@@ -265,6 +265,15 @@
     <Content Include="Images\IntoTheForest.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\machine.png" />
+    <Content Include="Images\Qbackgrounds\1a.jpg" />
+    <Content Include="Images\Qbackgrounds\1b.jpg" />
+    <Content Include="Images\Qbackgrounds\1c.jpg" />
+    <Content Include="Images\Qbackgrounds\2a.jpg" />
+    <Content Include="Images\Qbackgrounds\2b.jpg" />
+    <Content Include="Images\Qbackgrounds\2c.jpg" />
+    <Content Include="Images\Qbackgrounds\3a.jpg" />
+    <Content Include="Images\Qbackgrounds\3b.jpg" />
+    <Content Include="Images\Qbackgrounds\3c.jpg" />
     <Content Include="Images\Qs background screen 2 total png.png" />
     <Content Include="Images\spin to win slot machine.png" />
     <Content Include="Images\spin-to-win-slot-machine-junior.png" />
