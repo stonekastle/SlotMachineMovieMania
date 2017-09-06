@@ -1,7 +1,9 @@
 ﻿@model TestDirecTV.Models.SlotsViewModel
+
 @{
-    ViewBag.Title = "Index3";
+    ViewBag.Title = "Q4";
 }
+
 
 <style>
     body {
@@ -16,7 +18,7 @@
         overflow-x: hidden;
     }
 
-    #dykStretch3 {
+    #dykStretch4 {
         max-height: 2000px;
         max-width: 750px;
     }
@@ -27,7 +29,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:300%; text-align:center;">Third Question</h1>
+        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:300%; text-align:center;">Fourth Question</h1>
     </div>
 </div>
 
@@ -82,7 +84,7 @@
         <br />
         <br />
         <br />
-        <center><input type="image" id="dykStretch3" img src="~/Images/DYK-1920x1080.png" /></center>
+        <center><input type="image" id="dykStretch4" img src="~/Images/DYK-1920x1080.png" /></center>
     </div>
 </div>
 
@@ -98,24 +100,24 @@
     var questionSet = @Model.QuestionSet;
     var questions = [
         {
-            question: "Who plays Jason Bourne?",
-            answers: ["Matt Damon", "Morgan Freeman", "Christian Bale", "Hugh Jackman"],
+            question: "Who plays Jason Bourne's lady friend?",
+            answers: ["Rachel Weisz", " Franka Potente", "Julia Stiles", "Hugh Jackman"],
+            correct: 1
+        },
+        {
+            question: "How many NFL teams are there?",
+            answers: ["29", "30", "32", "33"],
+            correct: 2
+        },
+        {
+            question: "Which country in EU has strongest economy?",
+            answers: ["Germany", "France", "Itay", "England"],
             correct: 0
         },
         {
-            question: "How many Superbowls have been played?",
-            answers: ["49", "51", "56", "62"],
-            correct: 1
-        },
-        {
-            question: "Without the UK, how many countries make up the EU?",
-            answers: ["23", "18", "32", "27"],
+            question: "In what month are the Oscars awarded?",
+            answers: ["November", "December", "January", "February"],
             correct: 3
-        },
-        {
-            question: "Which film was awarded the most Oscars?",
-            answers: ["The English Patient", "Titanic", "Gone With The Wind", "Forest Gump"],
-            correct: 1
         }
     ]
 
@@ -152,7 +154,15 @@
         }
 
         console.log("result", result)
-        setTimeout(function(){ window.location.href = "/home/Q4/" + userId + "/" + questionSet }, 5000)
+
+        finish();
+        setTimeout(function () {
+            $("#questionContainer").html("<h1>Move on to the Leaderboard!!</h1>");
+            setTimeout(function () {
+
+                window.location.href = "/home/questions/"
+            }, 5000)
+        }, 3000)
     }
 
 
@@ -168,6 +178,24 @@
             }
             , error: function (data) {
                 console.log("Put error")
+            }
+            , type: "PUT"
+        };
+        $.ajax(url, settings);
+    }
+
+    var finish = function () {
+        var url = "/api/scoreboard/finished";
+        var settings = {
+            cache: false
+            , contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            , data: "Id=" + userId
+            , dataType: "json"
+            , success: function (data) {
+                console.log("finished success")
+            }
+            , error: function (data) {
+                console.log("finished error")
             }
             , type: "PUT"
         };

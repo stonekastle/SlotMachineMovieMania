@@ -62,7 +62,17 @@ namespace TestDirecTV.Controllers
             model.QuestionSet = questionSet;
             return View(model);
         }
-        
+
+        [Route("Q4/{userId:int}/{questionSet:int}")]
+        public ActionResult Q4(int userId, int questionSet)
+        {
+            ViewBag.Title = "Q4";
+            SlotsViewModel model = new SlotsViewModel();
+            model.UserId = userId;
+            model.QuestionSet = questionSet;
+            return View(model);
+        }
+
         [Route("Scoreboard")]
         public ActionResult Scoreboard()
         {
