@@ -49,7 +49,14 @@
 <br />
 
 <div class="row">
-    <div class="col-sm-4 col-sm-offset-1">
+    <div class="col-sm-8 col-sm-offset-1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <br />
@@ -88,11 +95,15 @@
             </div>
             <br />
             <br />
-            <div style="text-align:center; font-family:'ATT Aleck Sans'; color:#00a6d6; font-size:200%;" id="answerContainer">
+            <div class="row" style="text-align:center; font-family:'ATT Aleck Sans'; color:#00a6d6; font-size:200%;" id="answerContainer1">
+            </div>
+            <br />
+            <br />
+            <div class="row" style="text-align:center; font-family:'ATT Aleck Sans'; color:#00a6d6; font-size:200%;" id="answerContainer2">
             </div>
         </div>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-3">
         <br />
         <br />
         <br />
@@ -121,20 +132,20 @@
         <br />
         <br />
         <br />
-       @* <br />
-    <br />
-    <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />*@
+        @* <br />
+            <br />
+            <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />*@
         <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
     </div>
 </div>
@@ -145,7 +156,7 @@
 
 <script type="text/template" id="template">
 
-    <button type="button" class="btn-group btn btn-info btn-lg answer" id=""></button>
+    <button type="button" class="btn-group btn btn-info btn-lg answer col-sm-3" style="height:100px" id=""></button>
 
 </script>
 
@@ -188,7 +199,15 @@
             if (questionObject.correct == i) {
                 $temp.addClass("correct")
             }
-            $("#answerContainer").append($temp)
+            if (i % 2 == 1) {
+                $temp.addClass("col-sm-offset-3")
+            }
+            if (i < 2) {
+                $("#answerContainer1").append($temp)
+            }
+            else {
+                $("#answerContainer2").append($temp)
+            }
         }
 
     }
