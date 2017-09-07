@@ -6,13 +6,7 @@
 
 
 <style>
-    body {
-        background: no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
+
 
     html, body {
         overflow-x: hidden;
@@ -23,14 +17,49 @@
         max-height: 2000px;
         max-width: 750px;
     }
-</style>
 
+    img {
+      /* Set rules to fill background */
+      min-height: 100%;
+      min-width: 1080px;
+
+      /* Set up proportionate scaling */
+      width: 100%;
+      height: auto;
+
+      /* Set up positioning */
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    @@media screen and (max-width: 1080px) { /* Specific to this particular image */
+        img {
+            left: 50%;
+            margin-left: -512px; /* 50% */
+        }
+    }
+</style>
+<img src="" />
 
 
 
 <div class="row">
     <div class="col-sm-12">
         <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:300%; text-align:center;">Fourth Question</h1>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="col-sm-offset-7 col-sm-5">
+        <h1 id="result" style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:300%; text-align:left;"></h1>
     </div>
 </div>
 
@@ -40,11 +69,6 @@
 
 <div class="row">
     <div class="col-sm-8 col-sm-offset-1">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <br />
         <br />
         <br />
@@ -119,7 +143,7 @@
                 <br />
                 <br />
                 <br />*@
-        <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
+        <input type="image" img src="~/Images/ATT Dan Created.gif" />
     </div>
 </div>
 
@@ -154,8 +178,9 @@
         }
     ]
 
-    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "d.jpg)";
-    $("body").css("background-image", backgroundImage)
+    //var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "d.jpg)";
+    var imageSource = "/Images/Qbackgrounds/" + questionSet + "d.jpg";
+    $("img").prop("src", imageSource)
 
     var pageQuestion = questions[questionSet - 1] // -1 turns questionSet number into index of questions array
     $(document).ready(function() {
@@ -191,17 +216,17 @@
         $("#questionContainer").empty()
         if (result == true) {
             put();
-            $("#questionContainer").html("<h1>You're Right!!</h1>");
+            $("#result").text("You're Right!!");
         }
         else {
-            $("#questionContainer").html("<h1>Sorry...</h1>");
+            $("#result").text("Sorry...");
         }
 
         console.log("result", result)
 
         finish();
         setTimeout(function () {
-            $("#questionContainer").html("<h1>Move on to the Leaderboard!!</h1>");
+            $("#result").text("Move on to the Leaderboard!!");
             setTimeout(function () {
 
                 window.location.href = "/home/questions/"

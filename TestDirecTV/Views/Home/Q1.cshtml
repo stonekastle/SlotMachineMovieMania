@@ -4,38 +4,37 @@
 }
 
 <style>
-    body {
-        background: no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-
     html, body {
         overflow-x: hidden;
         overflow-y: hidden;
     }
 
-    .movieQuestion {
-        position: relative;
-        width: 100%;
-        height: 60px;
-    }
-
-    #dykStretch1 {
+    #dykStretch4 {
         max-height: 2000px;
         max-width: 750px;
     }
 
-    .divPosition {
-        height: 90%;
+    img {
+        /* Set rules to fill background */
+        min-height: 100%;
+        min-width: 1080px;
+        /* Set up proportionate scaling */
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: auto;
+        /* Set up positioning */
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    @@media screen and (max-width: 1080px) { /* Specific to this particular image */
+        img {
+            left: 50%;
+            margin-left: -512px; /* 50% */
+        }
     }
 </style>
+<img src="" />
 
 
 @*<center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>*@
@@ -43,6 +42,19 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:300%; text-align:center;">First Question</h1>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="col-sm-offset-7 col-sm-5">
+        <h1 id="result" style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:300%; text-align:left;"></h1>
     </div>
 </div>
 
@@ -52,11 +64,6 @@
 
 <div class="row">
     <div class="col-sm-8 col-sm-offset-1">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <br />
         <br />
         <br />
@@ -131,10 +138,9 @@
                 <br />
                 <br />
                 <br />*@
-        <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
+        <input type="image" img src="~/Images/ATT Dan Created.gif" />
     </div>
 </div>
-
 
 
 
@@ -165,8 +171,9 @@
             correct: 2
         }
     ]
-    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "a.jpg)";
-    $("body").css("background-image", backgroundImage)
+    //var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "a.jpg)";
+    var imageSource = "/Images/Qbackgrounds/" + questionSet + "a.jpg";
+    $("img").prop("src", imageSource)
 
     var pageQuestion = questions[questionSet - 1] // -1 turns questionSet number into index of questions array
     $(document).ready(function() {
@@ -202,10 +209,10 @@
         $("#questionContainer").empty()
         if (result == true) {
             put();
-            $("#questionContainer").html("<h1>You're Right!!</h1>");
+            $("#result").text("You're Right!!");
         }
         else {
-            $("#questionContainer").html("<h1>Sorry...</h1>");
+            $("#result").text("Sorry...");
         }
 
         console.log("result", result)
