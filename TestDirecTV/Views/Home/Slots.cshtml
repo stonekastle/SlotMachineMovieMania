@@ -38,6 +38,11 @@
 
     }
 
+    /*.jackpot{
+        max-height: 1000px;
+        max-width:2000px;
+    }*/
+
 </style>
 
 
@@ -51,7 +56,19 @@
             <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
         </div>*@
 
-    
+    <div id="slotPotWinner">
+        <div class="row">
+            <div class="col-sm-12 jackpot">
+                @*<center> <h1><strong> WOW!  YOU JUST WON! </strong> Hurry to next screen!</h1></center>*@
+                        <center>
+                            <video width="1200" height="800" controls autoplay @*style="border-radius:5%; box-shadow: 8px 8px 60px black;"*@>
+                                <source src="~/Images/slotPotWinner.mp4" type="video/mp4">
+                            </video>
+                        </center>
+                <center> <h1 style="font-family:'ATT Aleck Sans';"> Wow!  YOU JUST WON!  Hurry to next screen!</h1></center>
+</div>
+        </div>
+    </div>
     
         <div class="col-sm-4 col-sm-offset-1">
             <br />
@@ -120,8 +137,7 @@
 
     <div class="col-sm-12 clearBackground">
         <br />
-        <br />
-        <br />
+        
         <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
         @*<center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>*@
     </div>

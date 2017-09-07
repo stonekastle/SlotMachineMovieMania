@@ -57,6 +57,7 @@ var slotMachine = {
     init: function () {
         //$('#betSpinUp').click(function() { slotMachine.change_bet(+1); });
         //$('#betSpinDown').click(function() { slotMachine.change_bet(-1); });
+        $('#slotPotWinner').hide();
         $('#spinButton').click(function () { slotMachine.spin(); });
 
         //$('#soundOffButton').click(function() { slotMachine.toggle_sound(); });
@@ -262,7 +263,7 @@ var slotMachine = {
             , dataType: "json"
             , success: function (response) {
                 console.log("questionset success")
-                setTimeout(function () { window.location.href = "/home/newuser/" }, 5000)
+                //setTimeout(function () { window.location.href = "/home/newuser/" }, 5000)
             }
             , error: function (response) {
                 console.log("questionset error")
@@ -286,9 +287,15 @@ var slotMachine = {
 
         $("#userImage").remove(); // this removes the user image since it's already been sitting in view since page load
 
-        $(".clearBackground").html("<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><h1><strong> Thanks, good lookin'!</strong> <br />  Please visit the next screen.</h1><center>");
+        //$("body").css("background-image", "url(/Images/TheException.png)")
+
+        $('#slotPotWinner').show();
+
+        //$(".clearBackground").html("<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><center><h1><strong> WOW!  YOU JUST WON! </strong> <br /> Hurry to next screen!</h1><center>");
 
         $("#PageContainer").remove(); //this removes the slot machine after it's been played
+
+        $(".clearBackground").remove();
 
        
 
@@ -382,7 +389,7 @@ var slotMachine = {
             // alignmentOffset is kind of empirical...
             var numIconsPerReel = slotMachine.stripHeight / 48;  //2A this is Chris' comment trying to establish numIconsPerReel
             //var distanceBetweenIcons = slotMachine.stripHeight / window.numIconsPerReel; //1A. this is the original code ***DO NOT DELETE THIS LINE****
-            var distanceBetweenIcons = numIconsPerReel; //2B this is also Chris' comment which proved fruitless
+            var distanceBetweenIcons = numIconsPerReel; //2B this is also Chris' comment which proved fruitless ***CORRECTION: fruitful
             var finalPosition = -slotMachine.stripHeight - ((outcome - 1) * distanceBetweenIcons) + slotMachine.alignmentOffset; //1B this is the orinal code
 
 

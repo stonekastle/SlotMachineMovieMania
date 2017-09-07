@@ -256,6 +256,7 @@
     <Content Include="Images\8-30-leaderboard-v2-2000-750.png" />
     <Content Include="Images\9-1 WELCOME SCREEN BACKGROUND.png" />
     <Content Include="Images\ATT Dan Created.gif" />
+    <Content Include="Images\bgScoreboardToronto.png" />
     <Content Include="Images\Blackcoat%27s daughter.png" />
     <Content Include="Images\DYK-1920x1080.png" />
     <Content Include="Images\Enemy.png" />
@@ -275,6 +276,7 @@
     <Content Include="Images\Qbackgrounds\3b.jpg" />
     <Content Include="Images\Qbackgrounds\3c.jpg" />
     <Content Include="Images\Qs background screen 2 total png.png" />
+    <Content Include="Images\slotPotWinner.mp4" />
     <Content Include="Images\spin to win slot machine.png" />
     <Content Include="Images\spin-to-win-slot-machine-junior.png" />
     <Content Include="Images\template1\main_bg.jpg" />

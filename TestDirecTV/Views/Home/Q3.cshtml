@@ -5,7 +5,7 @@
 
 <style>
     body {
-        background-image: url("/Images/Qs background screen 2 total png.png");
+        /*background-image: url("/Images/Qs background screen 2 total png.png");*/
         background-repeat: no-repeat;
         background-position: center top;
         background-size: cover;
@@ -118,6 +118,9 @@
             correct: 1
         }
     ]
+
+    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "a.jpg)";
+    $("body").css("background-image", backgroundImage)
 
     var pageQuestion = questions[questionSet - 1] // -1 turns questionSet number into index of questions array
     $(document).ready(function() {
