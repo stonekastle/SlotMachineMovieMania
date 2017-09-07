@@ -25,7 +25,7 @@
 </style>
 
 
-<center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
+
 
 <div class="row">
     <div class="col-sm-12">
@@ -39,6 +39,20 @@
 
 <div class="row">
     <div class="col-sm-4 col-sm-offset-1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <br />
@@ -84,7 +98,15 @@
         <br />
         <br />
         <br />
-        <center><input type="image" id="dykStretch4" img src="~/Images/DYK-1920x1080.png" /></center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center> @*This gif is smaller and less desireable but the one below it throws the page off*@
+        @*<center><img src="~/Images/ATT Dan Created.gif"  /></center>*@
+
     </div>
 </div>
 
@@ -100,23 +122,23 @@
     var questionSet = @Model.QuestionSet;
     var questions = [
         {
-            question: "Who plays Jason Bourne's lady friend?",
-            answers: ["Rachel Weisz", "Franka Potente", "Julia Stiles", "Hugh Jackman"],
+            question: "",
+            answers: ["Girl Gifts", "Family Man", "The Exception", "Trespass Against Us"],
             correct: 1
         },
         {
-            question: "How many NFL teams are there?",
-            answers: ["29", "30", "32", "33"],
+            question: "",
+            answers: ["Family Man", "The Forger", "Remember", "Enemy"],
             correct: 2
         },
         {
-            question: "Which country in EU has strongest economy?",
-            answers: ["Germany", "France", "Itay", "England"],
+            question: "",
+            answers: ["Trespass", "Enemy", "Family Man", "The Forger"],
             correct: 0
         }
     ]
 
-    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "a.jpg)";
+    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "d.jpg)";
     $("body").css("background-image", backgroundImage)
 
     var pageQuestion = questions[questionSet - 1] // -1 turns questionSet number into index of questions array

@@ -26,7 +26,7 @@
 </style>
 
 
-<center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
+
 
 <div class="row">
     <div class="col-sm-12">
@@ -40,6 +40,21 @@
 
 <div class="row">
     <div class="col-sm-4 col-sm-offset-1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <br />
@@ -85,7 +100,13 @@
         <br />
         <br />
         <br />
-        <center><input type="image" id="dykStretch2" img src="~/Images/DYK-1920x1080.png" /></center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
     </div>
 </div>
 
@@ -137,23 +158,23 @@
     var questionSet = @Model.QuestionSet;
     var questions = [
         {
-            question: "The most recent Bourne film was NOT filmed in which country?",
-            answers: ["Spain", "Greece", "England", "Portugal"],
+            question: "",
+            answers: ["Family Man", "Revenge Dragons", "Equals", "Enemy"],
             correct: 3
         },
         {
             question: "How many points are awarded in an NFL touchback?",
-            answers: ["2", "3", "6", "7"],
-            correct: 0
+            answers: ["Mississippi Grind", "The Forger", "Remember", "Into The Forest"],
+            correct: 3
         },
         {
-            question: "California has the ___th largest global economy?",
-            answers: ["4", "6", "8", "10"],
+            question: "",
+            answers: ["Girl Gifts", "The Exception", "Enemy", "Family Man"],
             correct: 1
         }
     ]
 
-    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "a.jpg)";
+    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "b.jpg)";
     $("body").css("background-image", backgroundImage)
 
     var pageQuestion = questions[questionSet - 1] // -1 turns questionSet number into index of questions array

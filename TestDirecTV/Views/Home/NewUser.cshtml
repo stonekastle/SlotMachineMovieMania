@@ -122,6 +122,7 @@
                         context.drawImage(video, 0, 0, 640, 480);
                         $("#video").hide();
                         $("#canvas").show();
+
                         var dataURL = canvas.toDataURL('image/jpeg', 1);
                         var blob = dataURItoBlob(dataURL);
                         var fd = new FormData(document.forms[0]);

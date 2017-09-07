@@ -23,7 +23,7 @@
 </style>
 
 
-<center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
+@*<center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>*@
 
 <div class="row">
     <div class="col-sm-12">
@@ -37,6 +37,20 @@
 
 <div class="row">
     <div class="col-sm-4 col-sm-offset-1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <br />
@@ -82,7 +96,14 @@
         <br />
         <br />
         <br />
-        <center><input type="image" id="dykStretch3" img src="~/Images/DYK-1920x1080.png" /></center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+       
+        <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
     </div>
 </div>
 
@@ -98,23 +119,23 @@
     var questionSet = @Model.QuestionSet;
     var questions = [
         {
-            question: "Who plays Jason Bourne?",
-            answers: ["Matt Damon", "Morgan Freeman", "Christian Bale", "Hugh Jackman"],
+            question: "",
+            answers: ["Equals", "Tresspass Against Us", "The Forger", "The Exception"],
             correct: 0
         },
         {
-            question: "How many Superbowls have been played?",
-            answers: ["49", "51", "56", "62"],
+            question: "",
+            answers: ["Family Man", "Mississippi Grind", "The Forger", "Enemy"],
             correct: 1
         },
         {
-            question: "Without the UK, how many countries make up the EU?",
-            answers: ["23", "18", "32", "27"],
+            question: "",
+            answers: ["Family Man", "Girl Gifts", "Remember", "The Forger"],
             correct: 3
         }
     ]
 
-    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "a.jpg)";
+    var backgroundImage = "url(/Images/Qbackgrounds/" + questionSet + "c.jpg)";
     $("body").css("background-image", backgroundImage)
 
     var pageQuestion = questions[questionSet - 1] // -1 turns questionSet number into index of questions array
