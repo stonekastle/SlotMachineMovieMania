@@ -36,7 +36,7 @@
 
     <div class="col-sm-4 offset-col-sm-1" id="lookGreat" style="border-radius:5%; margin:0px; padding:0px; border-style:solid; border-color:#00a6d6">
     @*<div class="col-sm-4" id="lookGreat" style="border-radius: 5%; box-shadow: 8px 8px 60px #00a6d6">*@
-        <center><h1 id="coundown"></h1></center>
+        <center><h1 id="countdown"></h1></center>
         <center><video id="video" width="628" height="480" autoplay style="border-radius:5%; display:none"></video></center>
         @*<center><canvas id="canvas" width="640" height="480"></canvas></center>*@
         <canvas style="border-radius:5%;" id="canvas" width="628" height="480"></canvas>
@@ -108,9 +108,9 @@
         })
 
         var createUser = function () {
-            $("#inputDiv").show();
-            $("#video").hide();
-            $("#lookGreat").show();
+            $("#inputDiv").hide();
+            $("#video").show();
+            $("#canvas").hide();
             $("#countdown").text("3");
             setTimeout(function () {
                 $("#countdown").text("2")
@@ -121,7 +121,7 @@
 
                         context.drawImage(video, 0, 0, 640, 480);
                         $("#video").hide();
-
+                        $("#canvas").show();
                         var dataURL = canvas.toDataURL('image/jpeg', 1);
                         var blob = dataURItoBlob(dataURL);
                         var fd = new FormData(document.forms[0]);
