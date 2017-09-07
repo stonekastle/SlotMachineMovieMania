@@ -57,7 +57,7 @@ var slotMachine = {
     init: function () {
         //$('#betSpinUp').click(function() { slotMachine.change_bet(+1); });
         //$('#betSpinDown').click(function() { slotMachine.change_bet(-1); });
-        $('#slotPotWinner').hide();
+        
         $('#spinButton').click(function () { slotMachine.spin(); });
 
         //$('#soundOffButton').click(function() { slotMachine.toggle_sound(); });
