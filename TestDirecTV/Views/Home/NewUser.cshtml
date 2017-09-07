@@ -2,10 +2,10 @@
 
 <style>
     body {
-        background-image: url("/Images/9-1 WELCOME SCREEN BACKGROUND.png");
+        /*background-image: url("/Images/9-1 WELCOME SCREEN BACKGROUND.png");
         background-repeat: no-repeat;
         background-position: center top;
-        background-size: cover;
+        background-size: cover;*/
     }
 
     html, body {
@@ -18,70 +18,104 @@
         max-width: 750px;
     }
 
-    
 
+    .fullscreen-bg {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -100;
+    }
+
+    .fullscreen-bg__video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    @@media (max-width: 767px) {
+        .fullscreen-bg {
+            background: url('/Images/newUserBg.mov') center center / no-repeat;
+            background-size: cover;
+        }
+
+        .fullscreen-bg__video {
+            display: none;
+        }
+    }
 </style>
 
+
+@*-----------------------------------------------Video Background---------------------------------------------*@
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="/Images/newUserBg0000.png" class="fullscreen-bg__video">
+        <source src="~/Images/newUserBg.mov" />
+    </video>
+</div>
+
+@*------------------------------------------------------------------------------------------------------------*@
+
 <div>
-
-
+@*--------------------------------------------Header/Banner--------------------------------------------------*@
     <div class="col-sm-12">
-        <br /><br />
-        <center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>
-        @*<h1 style="color:beige; font-family:verdana; font-size:500%; text-align:right;">Film Challenge</h1>*@
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <center><input type="image" img src="~/Images/8-30-flicktionary-logo-v5-(1)narrow.png" id="headerStretch" /></center>
     </div>
+@*-----------------------------------------------------------------------------------------------------------*@
 
-    
-    <div class="col-sm-2"></div>
 
-    <div class="col-sm-4 offset-col-sm-1" id="lookGreat" style="border-radius:5%; margin:0px; padding:0px; border-style:solid; border-color:#00a6d6">
-    @*<div class="col-sm-4" id="lookGreat" style="border-radius: 5%; box-shadow: 8px 8px 60px #00a6d6">*@
+@*----------------------This is used to push the "userImage" away from left edge-----------------------------*@
+    <div class="col-sm-3"></div>
+@*-----------------------------------------------------------------------------------------------------------*@
+
+
+@*------------this div is left half and  has player webcam image pushed down from top----------------*@   
+
+    <div class="col-sm-3 offset-col-sm-1" id="lookGreat" style="border-radius:5%; margin:0px; padding:0px; border-style:solid; border-color:#00a6d6">
+
         <center><h1 id="countdown"></h1></center>
-        <center><video id="video" width="628" height="480" autoplay style="border-radius:5%; display:none"></video></center>
-        @*<center><canvas id="canvas" width="640" height="480"></canvas></center>*@
-        <canvas style="border-radius:5%;" id="canvas" width="628" height="480"></canvas>
+
+        <center><video id="video" width="475" height="380" autoplay style="border-radius:5%; display:none"></video></center>
+
+        <canvas style="border-radius:5%;" id="canvas" width="475" height="380"></canvas>
+
     </div>
 
-    
+@*-----------------------------------------------------------------------------------------------------------*@
 
-    @*<div class="col-sm-4" id="userPhoto">
-        <center><canvas style="border-radius: 5%; box-shadow: 8px 8px 60px grey" id="canvas" width="640" height="480"></canvas></center>
-    </div>*@
+
+@*------------this div is right half and has player input-----------------------------------------------------*@
 
     <div class="col-sm-4 clearBackground" id="inputDiv">
         <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center">Smile for the camera</h1>
-            <br /></>
+        <br /></>
         <h3 style="color:#00a6d6; font-family:'ATT Aleck Sans'; text-align:center">Please enter your name:</h3>
 
         <div class="form-group">
             <center><input type="text" class="form-control" id="userName" /></center>
-                <br />
+            <br />
             <h3 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center"><strong>Tap the globe</strong></h3>
 
             <center><input type="image" img src="~/Images/ATT Dan Created.gif" id="submit" class="btn-btn-primary" /></center>
         </div>
-    </div>@*Please enter your name*@
+    </div>
 
-
-
-
-
-
-
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <br />
+@*------------------------------------------------------------------------------------------------------------*@
+    
 </div>
+
+
+
 
 
 @section Scripts {

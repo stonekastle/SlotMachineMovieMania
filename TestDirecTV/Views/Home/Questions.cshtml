@@ -9,10 +9,10 @@
     }
 
     body {
-        background-image: url("/Images/9-1 WELCOME SCREEN BACKGROUND.png");
+        /*background-image: url("/Images/9-1 WELCOME SCREEN BACKGROUND.png");
         background-repeat: no-repeat;
         background-position: center top;
-        background-size: contain;
+        background-size: contain;*/
     }
 
     html, body {
@@ -37,112 +37,88 @@
     }
     
 
-    
+    .fullscreen-bg {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -100;
+    }
+
+    .fullscreen-bg__video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    @@media (max-width: 767px) {
+        .fullscreen-bg {
+            background: url('/Images/newUserBg.mov') center center / no-repeat;
+            background-size: cover;
+        }
+
+        .fullscreen-bg__video {
+            display: none;
+        }
+    }
 
 </style>
 
+@*------------------------------Video Background------------------------------------------------------------*@
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="/Images/newUserBg0000.png" class="fullscreen-bg__video">
+        <source src="~/Images/newUserBg.mov" />
+    </video>
+</div>
+@*----------------------------------------------------------------------------------------------------------*@
+
 
 <div>
+@*---------------------------------Header/Banner------------------------------------------------------------*@
     <div class="col-sm-12">
-        <br /><br />
-        <center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>       
+        <br /><br /><br /><br /><br /><br /><br />
+        <center><input type="image" img src="~/Images/8-30-flicktionary-logo-v5-(1)narrow.png" id="headerStretch" /></center>      
     </div>
+@*----------------------------------------------------------------------------------------------------------*@
 
-    <div class="col-sm-2"></div>
-    
+@*----------------------This is used to push the "userImage" away from left edge-----------------------------*@
+    <div class="col-sm-3"></div>
+@*----------------------------------------------------------------------------------------------------------*@    
 
-    <div class="col-sm-4" >
+    <div class="col-sm-3" >
         <center><img id="userImage" src="" /></center>
     </div>
+
 
     <div class="col-sm-4">
         <h1 style="color:#00a6d6; font-family:'ATT Aleck Sans'; font-size:500%; text-align:center;">Questions</h1>
         <br />
-        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center"><strong>That slot machine just shuffled and sent us your quiz</strong></h1>
+        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; text-align:center"><strong>That slot machine just <br />shuffled and got your quiz</strong></h1>
         <br />
         <h3 style="color:#00a6d6; font-family:'ATT Aleck Sans'; text-align:center"><strong>Press the globe to get started</strong></h3>
 
         <div class="form-group">
                 <center><input type="image" img src="~/Images/ATT Dan Created.gif" class="btn-btn-primary disabledbutton" name="Start" id="submit" /></center>
-            </div>
         </div>
+
     </div>
+</div>
 
 
    
           
       
-
-    <div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-             
-            </div>
-        </div>
-    </div>
-
-    @*<div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <h3 style="color:gold; font-family:verdana; text-align:left"><strong>Press the globe to get started</strong></h3>
-            </div>
-        </div>
-    </div>*@
-
-
-    @*<div class="clearBackground">
-        <div class="row">
-           
-            <div class="col-sm-1"></div>
-            <div class="col-sm-4 id="userImageSmall">
-                <center><img id="userImage" src="" /></center>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-    </div>*@
-
-    @*<div class="form-group">
-        <div class="col-sm-6"></div>
-        <div class="col-sm-6">
-            <center><input type="image" img src="~/Images/ATT Dan Created.gif" class="btn-btn-primary disabledbutton" name="Start" id="submit"/></center>
-        </div>
-    </div>*@
-
-    @*<div class="clearBackground">
-        <div class="row">
-            <div class="col-sm-6">
-                <center><input type="image" img src="~/Images/ATT Dan Created.gif" /></center>
-            </div>
-        </div>        
-    </div>*@
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-</div>
+   
 
 <script type="text/javascript">
         var user = null;

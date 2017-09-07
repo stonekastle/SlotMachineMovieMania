@@ -4,8 +4,43 @@
 }
 
 <style>
+    .fullscreen-bg {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -100;
+        opacity:.5;
+    }
+
+    .fullscreen-bg__video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    @@media (max-width: 767px) {
+        .fullscreen-bg {
+            background: url('/Images/ScoreboardBg.mov') center center / no-repeat;
+            background-size: cover;
+        }
+
+        .fullscreen-bg__video {
+            display: none;
+        }
+    }
     body:before{
-        background-image: url("/Images/bgScoreboardToronto.png");
+        /*background-image: url("/Images/bgScoreboardToronto.png");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center top;
@@ -17,7 +52,7 @@
         position:absolute;
         z-index:-1;
         top:0; left:0; right:0; height:500%;
-        opacity:.5;
+        opacity:.5;*/
     }
 
     body {
@@ -86,8 +121,16 @@
     }
 </style>
 
+@*----------------------------Video Background-------------------------------------------------------------*@
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="/Images/ScoreboardBg0000.png" class="fullscreen-bg__video">
+        <source src="~/Images/ScoreboardBg.mov" />
+    </video>
+</div>
+@*---------------------------------------------------------------------------------------------------------*@
 
 
+@*---------------------------Title Header with globe behind it---------------------------------------------*@
 <div class="container">
     <div class="col-sm-12">
         <center><img src="~/Images/ATT Dan Created.gif" id="trademark" /></center>
@@ -97,9 +140,10 @@
         <center><img id="headerStretch" src="~/Images/8-30-leaderboard-v2-2000-750.png" /></center>
     </div>
 </div>
+@*---------------------------------------------------------------------------------------------------------*@
 
 
-
+@*-----------------------------------Scoreboard------------------------------------------------------------*@
 <div>
     <div class="row">
         <div class="col-sm-12">
@@ -110,6 +154,9 @@
         </div>
     </div>
 </div>
+@*---------------------------------------------------------------------------------------------------------*@
+
+
 
 <script type="text/template" id="template">
     <div class="container bottomBorder divPosition">
@@ -120,6 +167,10 @@
         <img class="col-sm-4 userImage" style="width: 20%; height: auto;"/>
     </div>
 </script>
+
+
+
+
 
 <script>
     $(document).ready(function () {

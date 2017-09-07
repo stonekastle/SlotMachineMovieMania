@@ -13,11 +13,10 @@
 
     body {
         /*background-image: url("/Images/FamilyMan.png");*/
-        background-image:url("/Images/template2/main_bg.gif");
+        background-image: url("/Images/template2/main_bg.gif");
         background-repeat: no-repeat;
         background-position: center top; /*deleted "center top" so that the background is now centered in the middle of the image and screen rather than from very top of the image*/
         background-size: cover;
-        
     }
 
     html, body {
@@ -32,117 +31,134 @@
         max-width: 750px;
     }
 
-     #userImage{
+    #userImage {
         border-radius: 5%;
         box-shadow: 8px 8px 60px black /*#00a6d6*/;
-
     }
 
-    /*.jackpot{
+    .jackpot {
         max-height: 1000px;
-        max-width:2000px;
-    }*/
-
+        max-width: 2000px;
+    }
 </style>
 
 
 
 <div class="container-fluid">
-    
-        @*<div class="col-sm-12 clearBackground">
-            <br />
-            <br />
-            <br />
-            <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
-        </div>*@
 
+@*---------------------------------this section is for after spin event-------------------------------------*@
     <div id="slotPotWinner">
         <div class="row">
             <div class="col-sm-12 jackpot">
                 @*<center> <h1><strong> WOW!  YOU JUST WON! </strong> Hurry to next screen!</h1></center>*@
-                        <center>
-                            <video width="1200" height="800" autoplay @*style="border-radius:5%; box-shadow: 8px 8px 60px black;"*@>
-                                <source src="~/Images/slotPotWinner.mp4" type="video/mp4">
-                            </video>
-                        </center>
+                <center>
+                    @*<video loop muted autoplay poster="/Images/SlotPotWinner-YouWon0000.png">
+                            <source src="~/Images/SlotPotWinner-YouWon.mov" />
+                        </video>*@
+
+
+
+                    <video width="1200" height="800" autoplay @*style="border-radius:5%; box-shadow: 8px 8px 60px black;"*@>
+                        <source src="~/Images/slotPotWinner.mp4" type="video/mp4">
+                    </video>
+                </center>
                 <center> <h1 style="font-family:'ATT Aleck Sans';"> Wow!  YOU JUST WON!  Hurry to next screen!</h1></center>
-</div>
-        </div>
-    </div>
-    
-        <div class="col-sm-4 col-sm-offset-1">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-            <center><img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" /></center>
-        </div>
-        <div class="col-sm-5">
-            <div id="PageContainer" style="background-size:cover; right: 100px;">
-                <div id="PageContainerInner">
-                    @*<img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />*@
-                    <!-- Just to be able to set the "won!" extra background -->
-
-                    <div id="slotMachineContainer">
-
-                        <div id="ReelContainer">
-                            <div id="reel1" class="reel"></div>
-                            <div id="reel2" class="reel"></div>
-                            <div id="reel3" class="reel"></div>
-                            <div id="reelOverlay"></div>
-                        </div>
-
-                        <div id="spinButton"></div>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                    </div>
-
-                    @*<div id="soundOffButton"></div>*@
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-
-
-                </div>
             </div>
         </div>
-        <div class="col-sm-2"></div>
+    </div>
+@*----------------------------------------------------------------------------------------------------------*@
+
+
+@*------------this div is left half of page and  has player webcam image pushed down from top---------------*@
+
+    <div class="col-sm-4 col-sm-offset-1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <center><img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" /></center>
+    </div>
+
+@*-------------this div is right half of page and contains the slot machine container-----------------------*@
+
+    <div class="col-sm-5">
+        <div id="PageContainer" style="background-size:cover; right: 100px;">
+            <div id="PageContainerInner">
+                @*<img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />*@
+                <!-- Just to be able to set the "won!" extra background -->
+
+                <div id="slotMachineContainer">
+
+                    <div id="ReelContainer">
+                        <div id="reel1" class="reel"></div>
+                        <div id="reel2" class="reel"></div>
+                        <div id="reel3" class="reel"></div>
+                        <div id="reelOverlay"></div>
+                    </div>
+
+                    <div id="spinButton"></div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+                @*<div id="soundOffButton"></div>*@
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+
+            </div>
+        </div>
+    </div>
+
+@*----------------------------------------------------------------------------------------------------------*@
+
+
+@*-------------------this is only to push slot machine container away from edge-----------------------------*@
+
+    <div class="col-sm-2">
+    </div>
+
+@*------------------------------------------FOOTER----------------------------------------------------------*@
 
     <div class="col-sm-12 clearBackground">
         <br />
-        
         <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
-        @*<center><input type="image" img src="~/Images/8-30 flicktionary logo v5 (1).png" id="headerStretch" /></center>*@
     </div>
-    
+@*----------------------------------------------------------------------------------------------------------*@
 </div>
+
+
+
+
 
 @section Scripts {
     <script type="text/javascript" src="~/js/jquery-1.7.1.min.js"></script>
