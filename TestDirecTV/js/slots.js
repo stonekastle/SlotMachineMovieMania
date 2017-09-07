@@ -263,7 +263,7 @@ var slotMachine = {
             , dataType: "json"
             , success: function (response) {
                 console.log("questionset success")
-                setTimeout(function () { window.location.href = "/home/newuser/" }, 5000)
+                setTimeout(function () { window.location.href = "/home/newuser/" }, 50000)
             }
             , error: function (response) {
                 console.log("questionset error")

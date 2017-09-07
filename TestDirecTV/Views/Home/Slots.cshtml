@@ -39,42 +39,35 @@
     .jackpot {
         max-height: 1000px;
         max-width: 2000px;
+        /*display:none;*/
     }
 
-    .slotPotWinner{
-        display:none;
+    #slotPotWinner {
+        display: none;
     }
-
 </style>
 
 
 
 <div class="container-fluid">
 
-@*---------------------------------this section is for after spin event-------------------------------------*@
+    @*---------------------------------this section is for after spin event-------------------------------------*@
     <div id="slotPotWinner">
         <div class="row">
             <div class="col-sm-12 jackpot">
-                @*<center> <h1><strong> WOW!  YOU JUST WON! </strong> Hurry to next screen!</h1></center>*@
                 <center>
-                    @*<video loop muted autoplay poster="/Images/SlotPotWinner-YouWon0000.png">
-                            <source src="~/Images/SlotPotWinner-YouWon.mov" />
-                        </video>*@
-
-
-
-                    <video width="1200" height="800" autoplay @*style="border-radius:5%; box-shadow: 8px 8px 60px black;"*@>
-                        <source src="~/Images/slotPotWinner.mp4" type="video/mp4">
+                    <video width="1200" height="800" autoplay>
+                        <source src="~/Images/SlotPotWinner-YouWon.mp4" type="video/mp4">
                     </video>
                 </center>
                 <center> <h1 style="font-family:'ATT Aleck Sans';"> Wow!  YOU JUST WON!  Hurry to next screen!</h1></center>
             </div>
         </div>
     </div>
-@*----------------------------------------------------------------------------------------------------------*@
+    @*----------------------------------------------------------------------------------------------------------*@
 
 
-@*------------this div is left half of page and  has player webcam image pushed down from top---------------*@
+    @*------------this div is left half of page and  has player webcam image pushed down from top---------------*@
 
     <div class="col-sm-4 col-sm-offset-1">
         <br />
@@ -91,7 +84,7 @@
         <center><img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" /></center>
     </div>
 
-@*-------------this div is right half of page and contains the slot machine container-----------------------*@
+    @*-------------this div is right half of page and contains the slot machine container-----------------------*@
 
     <div class="col-sm-5">
         <div id="PageContainer" style="background-size:cover; right: 100px;">
@@ -144,21 +137,21 @@
         </div>
     </div>
 
-@*----------------------------------------------------------------------------------------------------------*@
+    @*----------------------------------------------------------------------------------------------------------*@
 
 
-@*-------------------this is only to push slot machine container away from edge-----------------------------*@
+    @*-------------------this is only to push slot machine container away from edge-----------------------------*@
 
     <div class="col-sm-2">
     </div>
 
-@*------------------------------------------FOOTER----------------------------------------------------------*@
+    @*------------------------------------------FOOTER----------------------------------------------------------*@
 
     <div class="col-sm-12 clearBackground">
         <br />
         <center><img type="image" src="~/Images/spin-to-win-slot-machine-junior.png" /></center>
     </div>
-@*----------------------------------------------------------------------------------------------------------*@
+    @*----------------------------------------------------------------------------------------------------------*@
 </div>
 
 
