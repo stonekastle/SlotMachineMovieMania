@@ -175,6 +175,7 @@
 
 <script>
     $(document).ready(function () {
+        var scrollSpeed;
         getAll(onGetAllSuccess, onGetAllError)
     });
 
@@ -195,6 +196,9 @@
     var onGetAllSuccess = function (data) {
         $("#scoreboard").empty();
         console.log("get success");
+        scrollSpeed = (data.Items.length / 10 + 1) * 1000 + 10000;
+        if (scrollSpeed > 36000)
+            scrollSpeed = 36000;
         for (var i = 0; i < data.Items.length; i++) {
             var $temp = $($("#template").html());
             $temp.find(".userImage").prop("src", data.Items[i].ImageURL);
@@ -206,10 +210,10 @@
 
         (function down_then_up() {
 
-            $("html, body").animate({ scrollTop: $(document).height() }, 36000, function () {
+            $("html, body").animate({ scrollTop: $(document).height() }, scrollSpeed, function () {
 
                 // Use the `down_then_up` function as a callback----v--- to repeat the cycle
-                $('html, body').animate({ scrollTop: 0 }, 36000, function () { window.location.href = "/home/scoreboard" });
+                $('html, body').animate({ scrollTop: 0 }, scrollSpeed, function () { window.location.href = "/home/scoreboard" });
             });
 
         })();
