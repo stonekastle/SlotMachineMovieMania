@@ -69,6 +69,7 @@
         max-width: 100%;
         max-height: 500%;
         overflow-x: hidden;
+        overflow: hidden;
     }
 
     #headerStretch {
@@ -202,9 +203,20 @@
             $temp.find(".userScore").text(data.Items[i].Score);
             $("#scoreboard").append($temp);
         }
-        setTimeout(function () {
-            getAll(onGetAllSuccess, onGetAllError)
-        }, 1000)
+
+        (function down_then_up() {
+
+            $("html, body").animate({ scrollTop: $(document).height() }, 36000, function () {
+
+                // Use the `down_then_up` function as a callback----v--- to repeat the cycle
+                $('html, body').animate({ scrollTop: 0 }, 36000, function () { window.location.href = "/home/scoreboard" });
+            });
+
+        })();
+
+        //setTimeout(function () {
+        //    getAll(onGetAllSuccess, onGetAllError)
+        //}, 5000)
     }
 
     var onGetAllError = function (data) {
