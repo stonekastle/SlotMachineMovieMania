@@ -54,14 +54,13 @@
     @*---------------------------------this section is for after spin event-------------------------------------*@
     <div id="slotPotWinner">
         <div class="row">
-            <div class="col-sm-12 jackpot">
+            <div class="col-sm-12">
                 <center>
-                    <video width="1200" height="800" autoplay>
-                        <source src="~/Images/SlotPotWinner-YouWon.mp4" type="video/mp4">
+                    <video id="video" width="1200" height="800" autoplay loop>
+                        @*<source id="source" src="" type="video/webm">*@
                     </video>
                 </center>
-
-                <center><h1 style="font-family:'ATT Aleck Sans';"> Wow!  YOU JUST WON!  Hurry to next screen!</h1></center>
+                <center> <h1 style="color:black; font-size: 100px; font-weight: 900; font-family:'ATT Aleck Sans';"> Wow!  YOU JUST WON!  Hurry to next screen!</h1></center>
             </div>
         </div>
     </div>
@@ -70,7 +69,7 @@
 
     @*------------this div is left half of page and  has player webcam image pushed down from top---------------*@
 
-    <div class="col-sm-4 col-sm-offset-1">
+    <div class="col-sm-4 col-sm-offset-2">
         <br />
         <br />
         <br />
@@ -166,6 +165,11 @@
     <script type="text/javascript" src="~/js/slots.js"></script>
     <script type="text/javascript">
         var userId = @Model.UserId;
+        if (userId % 2 == 0)
+            $("#video").prop("src", "/Images/SlotPotWinner-YouWonGirl.webm");
+        else
+            $("#video").prop("src", "/Images/SlotPotWinner-YouWonGuy.webm");
+
         var machineName = '';
 
         var numIconsPerReel = '';
