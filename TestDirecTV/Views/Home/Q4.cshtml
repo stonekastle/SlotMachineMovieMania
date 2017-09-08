@@ -46,11 +46,8 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:60px; font-weight:bold; text-align:center;">#4</h1>
+        <h1 style="color:#00629b; font-family:'ATT Aleck Sans'; font-size:60px; font-weight:bold; text-align:center; margin-left: -40px">#4</h1>
     </div>
-    <br />
-    <br />
-    <br />
     <br />
     <br />
     <br />
@@ -69,12 +66,6 @@
 
 <div class="row">
     <div class="col-sm-8 col-sm-offset-1">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <br />
         <br />
         <br />
@@ -227,10 +218,12 @@
         finish();
         setTimeout(function () {
             $("#result").text("Move on to the Leaderboard!!");
+            $("#result").css("margin-top", "-50px");
+
             setTimeout(function () {
 
                 window.location.href = "/home/questions/"
-            }, 5000)
+            }, 10000)
         }, 3000)
     }
 

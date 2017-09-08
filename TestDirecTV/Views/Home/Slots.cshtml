@@ -23,6 +23,7 @@
         max-width: 100%;
         max-height: 500%;
         overflow-x: hidden;
+        overflow-y: hidden;
     }
 
 
@@ -56,7 +57,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <center>
-                    <video id="video" width="1200" height="800" autoplay loop>
+                    <video id="video" width="900" height="600" autoplay loop>
                         @*<source id="source" src="" type="video/webm">*@
                     </video>
                 </center>
@@ -69,12 +70,7 @@
 
     @*------------this div is left half of page and  has player webcam image pushed down from top---------------*@
 
-    <div class="col-sm-4 col-sm-offset-2">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+    <div class="col-sm-4 col-sm-offset-1">
         <br />
         <br />
         <br />
@@ -88,7 +84,7 @@
 
     <div class="col-sm-5">
         <div id="PageContainer" style="background-size:cover; right: 100px;">
-            <div id="PageContainerInner">
+            <div id="PageContainerInner" style="margin-top:-100px">
                 @*<img id="userImage" src="https://s3.us-east-2.amazonaws.com/webcam-photos/@Model.ImageNumber" />*@
                 <!-- Just to be able to set the "won!" extra background -->
 
@@ -112,25 +108,9 @@
                     <br />
                     <br />
                     <br />
-                    <br />
-                    <br />
-                    <br />
                 </div>
 
                 @*<div id="soundOffButton"></div>*@
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
 
 
             </div>
