@@ -68,20 +68,20 @@
 <div>
 @*--------------------------------------------Header/Banner--------------------------------------------------*@
     <div class="col-sm-12">
-        <br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br />
         <center><input type="image" img src="~/Images/8-30-flicktionary-logo-v5-(1)narrow.png" id="headerStretch" /></center>
     </div>
 @*-----------------------------------------------------------------------------------------------------------*@
 
 
 @*----------------------This is used to push the "userImage" away from left edge-----------------------------*@
-    <div class="col-sm-3"></div>
+    <div id="pusher" class="col-sm-2"></div>
 @*-----------------------------------------------------------------------------------------------------------*@
 
 
 @*------------this div is left half and  has player webcam image pushed down from top----------------*@   
 
-    <div class="col-sm-3 offset-col-sm-1" id="lookGreat" style="border-radius:5%; margin:0px; padding:0px; border-style:solid; border-color:#00a6d6">
+    <div class="col-sm-4" id="lookGreat" style="border-radius:5%; margin:0px; padding:0px; border-style:solid; border-color:#00a6d6">
 
         <center><h1 id="countdown"></h1></center>
 
@@ -163,8 +163,8 @@
                             var fd = new FormData(document.forms[0]);
 
                             AWS.config.update({
-                                "accessKeyId": "",
-                                "secretAccessKey": "",
+                                "accessKeyId": "AKIAIHV3BY645SNQO54Q",
+                                "secretAccessKey": "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",
                                 "region": "us-east-2"
                             });
                             var s3 = new AWS.S3({ signatureVersion: 'v4' });
@@ -198,7 +198,12 @@
                 , dataType: "json"
                 , success: function (response) {
                     console.log("post success");
-                    setTimeout(function () { window.location.href = "/home/slots/" + response.Item + "/" + randomNumber }, 5000)
+                    setTimeout(function () {
+                        $(".clearBackground").remove();
+                        $("#pusher").addClass("col-sm-offset-2")
+                        $("#lookGreat").html("<br /><br /><br /><center><h1><strong>Wow, you've got a nice look!</strong></h1></center><br /><center><h1>Now get ready for game time</h1></center>")
+                        setTimeout(function () { window.location.href = "/home/slots/" + response.Item + "/" + randomNumber }, 3000)
+                    }, 3000)
                 }
                 , error: function (response) {
                     console.log("post error", response);
@@ -210,8 +215,6 @@
             // Add code to display message for going to next screen
             // currently just removes some elements for a visual effect, needs polishing
 
-            $(".clearBackground").remove();
-            $("#lookGreat").html("<br /><br /><br /><center><h1><strong>Wow, you've got a nice look!</strong></h1></center><br /><center><h1>Now get ready for game time</h1></center>")
         }
 
         var dataURItoBlob = function (dataURI) {
